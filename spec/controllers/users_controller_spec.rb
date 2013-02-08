@@ -76,10 +76,7 @@ describe UsersController do
                               :username => "test name",
                               :email => "test@test.com",
                               :first_name => "test",
-                              :last_name => "test",
-                              :is_enabled => true,
-                              :is_deleted => false,
-                              :is_email_validated => true
+                              :last_name => "test"
                           }
                         }, valid_session
         }.to change(User, :count).by(1)
@@ -91,10 +88,7 @@ describe UsersController do
                 :username => "test name",
                 :email => "test@test.com",
                 :first_name => "test",
-                :last_name => "test",
-                :is_enabled => true,
-                :is_deleted => false,
-                :is_email_validated => true
+                :last_name => "test"
             }
         }, valid_session
         assigns(:user).should be_a(User)
@@ -107,10 +101,7 @@ describe UsersController do
                 :username => "test name",
                 :email => "test@test.com",
                 :first_name => "test",
-                :last_name => "test",
-                :is_enabled => true,
-                :is_deleted => false,
-                :is_email_validated => true
+                :last_name => "test"
             }
         }, valid_session
         response.should redirect_to(User.last)
