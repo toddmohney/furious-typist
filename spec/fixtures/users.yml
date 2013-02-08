@@ -1,0 +1,9 @@
+
+todd:
+  username: toddmohney
+  email: toddmohney@gmail
+  first_name: todd
+  last_name: mohney
+  is_enabled: true
+  is_deleted: false
+  is_email_validated: true
