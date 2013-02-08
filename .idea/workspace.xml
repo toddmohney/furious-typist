@@ -30,10 +30,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="users.yml" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="users.yml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/fixtures/users.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="8" column="22" selection-start="156" selection-end="156" vertical-scroll-proportion="0.20031299">
+                <state line="8" column="21" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README.rdoc" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.rdoc">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="4" column="0" selection-start="91" selection-end="91" vertical-scroll-proportion="0.10223642">
                   <folding />
                 </state>
               </provider>
@@ -61,10 +70,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="articles_helper_spec.rb" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="README_ruby.rdoc" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README_ruby.rdoc">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="261" column="0" selection-start="9208" selection-end="9208" vertical-scroll-proportion="6.6709266">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="articles_helper_spec.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/helpers/articles_helper_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="14" column="0" selection-start="352" selection-end="352" vertical-scroll-proportion="0.35782748">
+                <state line="14" column="0" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -82,8 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/spec/models/user_spec.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/models/tag.rb" />
         <option value="$PROJECT_DIR$/spec/fixtures/tags.yml" />
         <option value="$PROJECT_DIR$/spec/models/tag_spec.rb" />
@@ -98,6 +114,8 @@
         <option value="$PROJECT_DIR$/spec/helpers/categories_helper_spec.rb" />
         <option value="$PROJECT_DIR$/spec/helpers/tags_helper_spec.rb" />
         <option value="$PROJECT_DIR$/spec/helpers/users_helper_spec.rb" />
+        <option value="$PROJECT_DIR$/README_ruby.rdoc" />
+        <option value="$PROJECT_DIR$/README.rdoc" />
       </list>
     </option>
   </component>
@@ -624,20 +642,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spec/models/category_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="36" selection-start="579" selection-end="579" vertical-scroll-proportion="0.5007825">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/models/article_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="20" selection-start="55" selection-end="63" vertical-scroll-proportion="-0.17527387">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../students/test/functional/students_controller_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -680,20 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="11" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/fixtures/users.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="22" selection-start="156" selection-end="156" vertical-scroll-proportion="0.20031299">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/controllers/users_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="108" column="16" selection-start="3719" selection-end="3719" vertical-scroll-proportion="0.0">
@@ -731,7 +721,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/helpers/articles_helper_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="352" selection-end="352" vertical-scroll-proportion="0.35782748">
+        <state line="14" column="0" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/fixtures/users.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="21" selection-start="155" selection-end="155" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README_ruby.rdoc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="261" column="0" selection-start="9208" selection-end="9208" vertical-scroll-proportion="6.6709266">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/tags_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="11" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.rdoc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="91" selection-end="91" vertical-scroll-proportion="0.10223642">
           <folding />
         </state>
       </provider>
