@@ -40,6 +40,24 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    # init tag list
+    @tags = []
+
+    unless params[:article][:tags] == nil || params[:article][:tags].empty?
+      # parse the tags from the params
+      @tag_list = params[:article][:tags].split(' ')
+
+      @tag_list.each do |tag|
+        @tags << Tag.find_or_create_by_name(tag)
+      end
+    end
+
+    logger.debug "tag list: " + @tag_list.to_s
+    logger.debug "tags: " + @tags.to_s
+
+    # replace the tags attribute in params
+    params[:article][:tags] = @tags
+
     @article = Article.new(params[:article])
 
     respond_to do |format|

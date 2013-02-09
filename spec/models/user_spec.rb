@@ -52,6 +52,94 @@ describe User do
     expect(@user).to have(1).error_on(:first_name)
   end
 
+  it "fails validation with invalid characters in the first name" do
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "t.o.d.d",
+                       :last_name => "mohney"
+                     })
+
+    expect(@user).to have(1).error_on(:first_name)
+
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "12345",
+                       :last_name => "mohney"
+                     })
+
+    expect(@user).to have(1).error_on(:first_name)
+
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "t.5",
+                       :last_name => "mohney"
+                     })
+
+    expect(@user).to have(1).error_on(:first_name)
+  end
+
+  it "fails validation with invalid characters in the last name" do
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "todd",
+                       :last_name => "moh-ney"
+                     })
+
+    expect(@user).to have(1).error_on(:last_name)
+
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "todd",
+                       :last_name => "moh5ey"
+                     })
+
+    expect(@user).to have(1).error_on(:last_name)
+
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "todd",
+                       :last_name => "234."
+                     })
+
+    expect(@user).to have(1).error_on(:last_name)
+  end
+
+  it "fails validation if the first name is < 2 or > 64 chars" do
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "t",
+                       :last_name => "mohney."
+                     })
+
+    expect(@user).to have(1).error_on(:first_name)
+
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                       :last_name => "mohney."
+                     })
+
+    expect(@user).to have(1).error_on(:first_name)
+  end
+
+  it "fails validation if the last name is < 2 or > 64 chars" do
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "todd",
+                       :last_name => "m."
+                     })
+
+    expect(@user).to have(1).error_on(:last_name)
+
+    @user = User.new({ :username => "some_new_user",
+                       :email => "test.test.com",
+                       :first_name => "todd",
+                       :last_name => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx."
+                     })
+
+    expect(@user).to have(1).error_on(:last_name)
+  end
+
   it "passes validation with a first and last name" do
     @user = User.new({ :username => "toddmohney",
                        :email => "toddmohney@gmail.com",
@@ -60,6 +148,31 @@ describe User do
     expect(@user).to have(0).errors
   end
 
+  #it "fails validation with a non-alphanumeric username" do
+  #  @user = User.new({ :username => "todd!@#mohney",
+  #                     :email => "toddmohney@gmail.com",
+  #                     :first_name => "todd",
+  #                     :last_name => "mohney"})
+  #
+  #  expect(@user).to have(1).error_on(:username)
+  #end
+  #
+  #it "fails validation if the username is < 4 or < 64 characters in length" do
+  #  @user = User.new({ :username => "tes",
+  #                     :email => "toddmohney@gmail.com",
+  #                     :first_name => "todd",
+  #                     :last_name => "mohney"})
+  #
+  #  expect(@user).to have(1).error_on(:username)
+  #
+  #  @user = User.new({ :username => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  #                     :email => "toddmohney@gmail.com",
+  #                     :first_name => "todd",
+  #                     :last_name => "mohney"})
+  #
+  #  expect(@user).to have(1).error_on(:username)
+  #end
+
   it "passes validation using a valid fixture" do
     @user = users(:todd)
     expect(@user).to have(0).errors
@@ -67,6 +180,7 @@ describe User do
 end
 
 
+# test method 'full_name'
 describe User, "#full_name" do
   fixtures :users
 

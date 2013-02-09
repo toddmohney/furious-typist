@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
                   :last_name,
                   :username
 
-  validates_presence_of :email,
-                        :username
+  validates_presence_of :email
+  validates_presence_of :username
 
   validate :username_validator
   validate :email_validator
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   private
 
     def username_validator
-
+      validate_username_format
     end
 
 
@@ -30,24 +30,53 @@ class User < ActiveRecord::Base
 
     end
 
+    def has_full_name?
+      !(first_name.blank? || last_name.blank?)
+    end
 
     def name_validator
-      if first_name.blank? && last_name.blank?
-        # the name only needs validating if we have a first and last name
-        return
+      if has_full_name?
+        @error_desc = validate_name_format(first_name, 2, 64)
+
+        unless @error_desc.blank?
+          return errors.add(:first_name, "first name " + @error_desc)
+        end
+
+        @error_desc = validate_name_format(last_name, 2, 64)
+
+        unless @error_desc.blank?
+          return errors.add(:last_name, "last name " + @error_desc)
+        end
+
+      elsif !(first_name.blank? && last_name.blank?)
+          # we only have half a name
+          if first_name.blank?
+            return errors.add(:first_name, "first name is blank")
+          end
+
+          if last_name.blank?
+            return errors.add(:last_name, "last name is blank")
+          end
       end
+    end
 
-      @error_desc = validate_name_format(first_name, 2, 64)
 
-      unless @error_desc.blank?
-        return errors.add(:first_name, "first name " + @error_desc)
-      end
-
-      @error_desc = validate_name_format(last_name, 2, 64)
-
-      unless @error_desc.blank?
-        return errors.add(:last_name, "last name " + @error_desc)
-      end
+    def validate_username_format
+      #if username.blank?
+      #  return errors.add(:username, "username is blank")
+      #end
+      #
+      #if username.length < 4
+      #  return errors.add(:username, " is too short")
+      #end
+      #
+      #if username.length > 64
+      #  return errors.add(:username, " is too long")
+      #end
+      #
+      #if username =~ /[^A-Za-z0-9]/
+      #  return errors.add(:username, " has some invalid characters")
+      #end
     end
 
 
