@@ -11,7 +11,17 @@
 <p class="alert"><%= alert %></p>
 
 <div class='main-title'>
-  <h1>Furious Typist</h1>
+  <a href="/"><h1>Furious Typist</h1></a>
+</div>
+
+<div id="auth-container">
+  <% if user_signed_in? %>
+    <span class='username'><%= link_to current_user.username, user_path(current_user) %></span> :
+    <span class='logout'><%= link_to 'log out', destroy_user_session_path, :method => :delete %></span>
+  <% else %>
+    <span class='signin'><%= link_to 'sign in ', '/users/sign_in' %></span> :
+    <span class='register'><%= link_to 'register', '/users/sign_up' %></span>
+  <% end %>
 </div>
 
 <%= yield %>
