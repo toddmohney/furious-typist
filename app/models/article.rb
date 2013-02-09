@@ -18,7 +18,11 @@ class Article < ActiveRecord::Base
     @tag_list = ""
 
     tags.each do |t|
-      @tag_list << t.name << " "
+      @tag_list << t.name << ", "
+    end
+
+    if @tag_list.end_with?(", ")
+      @tag_list = @tag_list[0..-2]
     end
 
     @tag_list

@@ -54,10 +54,13 @@ class ArticlesController < ApplicationController
 
     unless params[:article][:tags] == nil || params[:article][:tags].empty?
       # parse the tags from the params
-      @tag_list = params[:article][:tags].split(' ')
+      # convert spaces to a comma delimited string
+      @tag_list = params[:article][:tags].split(',')
 
       @tag_list.each do |tag|
-        @tags << Tag.find_or_create_by_name(tag.downcase)
+        unless tag.empty?
+          @tags << Tag.find_or_create_by_name(tag.downcase)
+        end
       end
     end
 
@@ -87,7 +90,7 @@ class ArticlesController < ApplicationController
 
     unless params[:article][:tags] == nil || params[:article][:tags].empty?
       # parse the tags from the params
-      @tag_list = params[:article][:tags].split(' ')
+      @tag_list = params[:article][:tags].split(',')
 
       @tag_list.each do |tag|
         unless tag.blank?
