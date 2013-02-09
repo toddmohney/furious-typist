@@ -48,7 +48,7 @@ class ArticlesController < ApplicationController
       @tag_list = params[:article][:tags].split(' ')
 
       @tag_list.each do |tag|
-        @tags << Tag.find_or_create_by_name(tag)
+        @tags << Tag.find_or_create_by_name(tag.downcase)
       end
     end
 

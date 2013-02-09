@@ -81,7 +81,8 @@ describe ArticlesController, :type => :controller do
                           :article => {
                               :body => "test body",
                               :title => "test title",
-                              :url => "http:someurl.com"
+                              :url => "http:someurl.com",
+                              :tags => "ok what now super"
                           }
                         }, valid_session
         }.to change(Article, :count).by(1)
@@ -92,7 +93,8 @@ describe ArticlesController, :type => :controller do
             :article => {
                 :body => "test body",
                 :title => "test title",
-                :url => "http:someurl.com"
+                :url => "http:someurl.com",
+                :tags => "ok what now super"
             }
         }, valid_session
         assigns(:article).should be_a(Article)
@@ -104,7 +106,8 @@ describe ArticlesController, :type => :controller do
             :article => {
                 :body => "test body",
                 :title => "test title",
-                :url => "http:someurl.com"
+                :url => "http:someurl.com",
+                :tags => "ok what now super"
             }
         }, valid_session
         response.should redirect_to(Article.last)
