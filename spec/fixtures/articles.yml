@@ -3,4 +3,5 @@ test:
   body: This is an article body
   title: This is an article title
   url: http://sample-url.com
+  category: tech
   tags: what now super duper

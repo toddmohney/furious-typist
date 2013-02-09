@@ -27,6 +27,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :category %>
+    <%= f.text_field :category, :value => @category_name %>
+  </div>
+
+  <div class="field">
     <%= f.label :tags %> (space delimited)<br />
     <%= f.text_field :tags, :value => @article.get_tag_names %>
   </div>

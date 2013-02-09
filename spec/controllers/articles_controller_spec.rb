@@ -141,7 +141,7 @@ describe ArticlesController, :type => :controller do
         # specifies that the Article created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Article.any_instance.should_receive(:update_attributes).with({ "url" => "MyString" })
+        Article.any_instance.should_receive(:update_attributes).with({ "category" => nil, "tags" => [], "url" => "MyString" })
         put :update, {:id => article.to_param, :article => { "url" => "MyString" }}, valid_session
       end
 

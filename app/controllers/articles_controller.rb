@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     @article = Article.new
+    @category_name = ""
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +36,21 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
+    @category_name = @article.category.name unless @article.category.blank?
   end
 
   # POST /articles
   # POST /articles.json
   def create
-    # init tag list
+    @category = nil
     @tags = []
+
+    unless params[:article][:category] == nil || params[:article][:category].empty?
+      @category_name = params[:article][:category]
+
+      # parse the category from the params
+      @category = Category.find_or_create_by_name(@category_name.downcase)
+    end
 
     unless params[:article][:tags] == nil || params[:article][:tags].empty?
       # parse the tags from the params
@@ -53,6 +62,7 @@ class ArticlesController < ApplicationController
     end
 
     # replace the tags attribute in params
+    params[:article][:category] = @category
     params[:article][:tags] = @tags
 
     @article = Article.new(params[:article])
@@ -72,6 +82,7 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.json
   def update
     # init tag list
+    @category = nil
     @tags = []
 
     unless params[:article][:tags] == nil || params[:article][:tags].empty?
@@ -85,7 +96,15 @@ class ArticlesController < ApplicationController
       end
     end
 
+    unless params[:article][:category] == nil || params[:article][:category].empty?
+      @category_name = params[:article][:category]
+
+      # parse the category from the params
+      @category = Category.find_or_create_by_name(@category_name.downcase)
+    end
+
     # replace the tags attribute in params
+    params[:article][:category] = @category
     params[:article][:tags] = @tags
 
     @article = Article.find(params[:id])

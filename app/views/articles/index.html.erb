@@ -3,7 +3,6 @@
 
 <br/><br/>
 
-
 <% @articles.each do |article| %>
   <div class='article-container'>
     <div class='article-title'>
@@ -11,11 +10,22 @@
     </div>
 
     <div class='article-create-date'>
-      <%= article.created_at.to_formatted_s(:db) %>
+      <% unless article.created_at.blank? %>
+        <%= article.created_at.to_formatted_s(:db) %>
+      <% end %>
     </div>
 
     <div class='article-body'>
       <%= article.body.html_safe %>
+    </div>
+
+    <div class='article-tags'>
+      <em>
+        <strong>category:</strong>
+        <% unless article.category.blank? %>
+          <%= article.category.name %>
+        <% end %>
+      </em>
     </div>
 
     <div class='article-tags'>

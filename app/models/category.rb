@@ -3,5 +3,7 @@ class Category < ActiveRecord::Base
                   :name
 
   validates_presence_of :name,
-                       :description
+                        :description
+
+  has_many :articles
 end

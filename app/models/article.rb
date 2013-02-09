@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
                   :title,
                   :url,
                   :tags,
+                  :category,
                   :created_at,
                   :updated_at
 
@@ -11,7 +12,7 @@ class Article < ActiveRecord::Base
                         :url
 
   has_and_belongs_to_many :tags
-
+  belongs_to :category
 
   def get_tag_names
     @tag_list = ""

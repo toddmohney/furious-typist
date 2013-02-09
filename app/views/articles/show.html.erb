@@ -15,6 +15,12 @@
   <%= @article.body %>
 </p>
 
+<p>
+  <b>Category:</b>
+  <% unless @article.category == nil %>
+    <%= @article.category.name %>
+  <% end %>
+</p>
 
 <p>
   <b>Tags:</b>
