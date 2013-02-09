@@ -30,7 +30,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="articles_controller.rb" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="articles_controller.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/articles_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="45" column="75" selection-start="931" selection-end="937" vertical-scroll-proportion="0.21116751">
@@ -72,10 +72,10 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="true">
+              <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/app/views/articles/show.html.erb">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state line="27" column="76" selection-start="364" selection-end="364" vertical-scroll-proportion="0.7047308">
+                    <state line="29" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="0.7569331">
                       <folding />
                     </state>
                   </provider>
@@ -149,8 +149,8 @@
         <option value="$PROJECT_DIR$/app/views/articles/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/models/article.rb" />
         <option value="$PROJECT_DIR$/app/views/articles/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/articles/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/articles_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/articles/show.html.erb" />
       </list>
     </option>
   </component>
@@ -755,16 +755,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/articles/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/articles_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="76" selection-start="364" selection-end="364" vertical-scroll-proportion="0.7047308">
+        <state line="45" column="75" selection-start="931" selection-end="937" vertical-scroll-proportion="0.21116751">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/articles_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/articles/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="75" selection-start="931" selection-end="937" vertical-scroll-proportion="0.21116751">
+        <state line="29" column="0" selection-start="366" selection-end="366" vertical-scroll-proportion="0.7569331">
           <folding />
         </state>
       </provider>
