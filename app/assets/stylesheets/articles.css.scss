@@ -1,3 +1,79 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$article_spacer_height: 15px;
+$title_color: #3c3c3c;
+$title_color_light: #cccccc;
+
+.article-container {
+  border: {
+    bottom: solid 1px #3c3c3c;
+  }
+
+  padding: {
+    left: 2%;
+    right: 2%;
+    bottom: 10px;
+  }
+}
+
+.article-title {
+  font-weight: bold;
+  font-size: x-large;
+
+  color: $title_color;
+
+  padding: {
+    bottom: 8px;
+  }
+
+  a {
+    color: $title_color;
+
+    &:active {
+      color: $title_color;
+      background-color: #ffffff;
+    }
+
+    &:visited {
+      color: $title_color;
+      background-color: #ffffff;
+    }
+
+    &:hover {
+      color: $title_color;
+      background-color: #ffffff;
+    }
+  }
+}
+
+.article-create-date {
+  font-weight: bold;
+  color: $title_color_light;
+  font-size: smaller;
+}
+
+.article-body {
+  padding: {
+    top: 5px;
+    bottom: 8px
+  };
+}
+
+.article-tags {
+  font-size: small;
+}
+
+.article-permalink {
+  font-size: small;
+}
+
+.admin-article {
+  font-size: small;
+}
+
+.article-spacer {
+  width:100%;
+  height: $article_spacer_height;
+}

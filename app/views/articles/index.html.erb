@@ -1,37 +1,40 @@
 <h1>Listing articles</h1>
 
-<table>
-  <tr>
-    <th>Url</th>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Tags</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to 'New Article', new_article_path %>
+
+<br/><br/>
+
 
 <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.url %></td>
-    <td><%= article.title %></td>
-    <td><%= article.body %></td>
-    <td>
+  <div class='article-container'>
+    <div class='article-title'>
+      <%= link_to article.title, article %>
+    </div>
+
+    <div class='article-create-date'>
+      <%= article.created_at.to_formatted_s(:db) %>
+    </div>
+
+    <div class='article-body'>
+      <%= article.body %>
+    </div>
+
+    <div class='article-tags'>
+      tags:
       <% article.tags.each do |t| %>
         <%= t.name + ' ' %>
       <% end %>
-    </td>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
+    </div>
+
+    <div class='admin-article'>
+      <%= link_to 'Edit', edit_article_path(article) %>
+      <%= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+    </div>
+  </div>
+
+  <div class='article-spacer'></div>
+
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Article', new_article_path %>
-
 
 <br/><br/><br/>
 

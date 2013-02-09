@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :tags %> (space delimited)<br />
-    <%= f.text_field :tags %>
+    <%= f.text_field :tags, :value => @article.get_tag_names %>
   </div>
 
   <div class="actions">
