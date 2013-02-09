@@ -48,26 +48,3 @@
 <% end %>
 
 <br/><br/><br/>
-
-click <a id="ajaxtester">here</a>
-
-<script type="text/javascript">
-
-$(function() {
-    $('#ajaxtester').on('click', function() {
-        $.ajax({
-            url: "/articles/ajaxcall.json",
-            data: { ok: "yep", maybe: "whatever" },
-            dataType: "json",
-            type: "get",
-            success: function(data) {
-              alert("response: " + JSON.parse(data))
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-              alert(errorThrown)
-            }
-        });
-    });
-});
-
-</script>

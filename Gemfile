@@ -21,6 +21,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem "select2-rails"
+
+  gem 'devise'
 end
 
 group :test, :development do

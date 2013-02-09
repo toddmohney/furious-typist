@@ -15,6 +15,7 @@ Furioustypist::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => 'local.furioustypist.com:3000' }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,4 +35,7 @@ Furioustypist::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Recommended by Devise when deployed using Rails3.1+ on Heroku
+  # config.assets.initialize_on_precompile = false
 end
