@@ -11,3 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+$title_color: #3b3b3b;
+
+.main-title {
+  h1 {
+    color: $title_color;
+  }
+}

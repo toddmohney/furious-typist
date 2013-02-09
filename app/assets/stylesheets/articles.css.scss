@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $article_spacer_height: 15px;
-$title_color: #3c3c3c;
-$title_color_light: #cccccc;
+$article_title_color: #4183c4;
+$article_title_color_light: #3c3c3c;
 
 .article-container {
   border: {
@@ -22,35 +22,34 @@ $title_color_light: #cccccc;
   font-weight: bold;
   font-size: x-large;
 
-  color: $title_color;
+  color: $article_title_color;
 
   padding: {
     bottom: 8px;
   }
 
   a {
-    color: $title_color;
+    color: $article_title_color;
 
     &:active {
-      color: $title_color;
+      color: $article_title_color;
       background-color: #ffffff;
     }
 
     &:visited {
-      color: $title_color;
+      color: $article_title_color;
       background-color: #ffffff;
     }
 
     &:hover {
-      color: $title_color;
+      color: $article_title_color;
       background-color: #ffffff;
     }
   }
 }
 
 .article-create-date {
-  font-weight: bold;
-  color: $title_color_light;
+  color: $article_title_color_light;
   font-size: smaller;
 }
 
