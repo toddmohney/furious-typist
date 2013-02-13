@@ -1,0 +1,43 @@
+
+= link_to 'New Article', new_article_path
+
+%br
+%br
+
+- @articles.each do |article| 
+  .article-container
+    .article-title
+      = link_to article.title, article
+    
+
+    .article-create-date
+      - unless article.created_at.blank?
+        = article.created_at.to_formatted_s(:db)
+
+    .article-body
+      = article.body.html_safe
+
+    .article-tags
+      %em
+        %strong 
+          category: 
+          - unless article.category.blank?
+            %span= article.category.name
+
+    .article-tags
+      %em
+        %strong 
+          tags: 
+          - article.tags.each do |t|
+            %span= t.name + ' '
+  
+    .admin-article
+      = link_to 'Edit', edit_article_path(article)
+      = link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  .article-spacer
+
+
+%br
+%br
+%br

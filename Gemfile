@@ -21,8 +21,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem "select2-rails"
-
-  gem 'devise'
 end
 
 group :test, :development do
@@ -32,6 +30,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'haml'
+gem 'devise'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
