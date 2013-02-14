@@ -33,7 +33,15 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'devise'
 
+# gem 'factory_girl'
+gem 'cucumber-rails', :require => false
+gem 'capybara'
+# gem 'factory_girl_rails'
+gem 'pry'
+gem 'pry-nav'
+gem 'pry-doc'
 
+gem 'database_cleaner'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
