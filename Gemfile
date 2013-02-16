@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# ruby '1.9.3'
+
 gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
@@ -25,23 +27,23 @@ end
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
-  gem 'ruby-debug'
+  # gem 'ruby-debug'
+  gem 'faker'
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-doc'
+  gem 'factory_girl_rails'
 end
 
+# gem 'linecache19'
 gem 'jquery-rails'
-
 gem 'haml'
 gem 'devise'
-
-# gem 'factory_girl'
-gem 'cucumber-rails', :require => false
-gem 'capybara'
-# gem 'factory_girl_rails'
-gem 'pry'
-gem 'pry-nav'
-gem 'pry-doc'
-
 gem 'database_cleaner'
+gem 'cancan'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -55,5 +57,3 @@ gem 'database_cleaner'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug'
