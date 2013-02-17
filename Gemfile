@@ -27,14 +27,19 @@ end
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
-  # gem 'ruby-debug'
-  gem 'faker'
-  gem 'cucumber-rails', :require => false
-  gem 'capybara'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-doc'
   gem 'factory_girl_rails'
+end
+
+group :test do
+  # gem 'ruby-debug'
+  gem 'faker'
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end
 
 # gem 'linecache19'

@@ -85,42 +85,18 @@ describe ArticlesController, :type => :controller do
     describe "with valid params" do
       it "creates a new Article" do
         expect {
-        post :create, {
-            :article => {
-                :body => "test body",
-                :title => "test title",
-                :url => "http://www.someurl.com",
-                :category => "tech",
-                :tags => "ok,hi,no,bye"
-            }
-        }, valid_session
+          post :create, {:article => FactoryGirl.attributes_for(:article_post_params)}, valid_session
         }.to change(Article, :count).by(1)
       end
 
       it "assigns a newly created article as @article" do
-        post :create, {
-            :article => {
-                :body => "test body",
-                :title => "test title",
-                :url => "http://www.someurl.com",
-                :category => "tech",
-                :tags => "ok,hi,no,bye"
-            }
-        }, valid_session
+        post :create, {:article => FactoryGirl.attributes_for(:article_post_params)}, valid_session
         assigns(:article).should be_a(Article)
         assigns(:article).should be_persisted
       end
 
       it "redirects to the created article" do
-        post :create, {
-            :article => {
-                :body => "test body",
-                :title => "test title",
-                :url => "http://www.someurl.com",
-                :tags => "ok,what,now,super",
-                :category => "tech"
-            }
-        }, valid_session
+        post :create, {:article => FactoryGirl.attributes_for(:article_post_params)}, valid_session
         response.should redirect_to(Article.last)
       end
     end
@@ -146,43 +122,59 @@ describe ArticlesController, :type => :controller do
 
   describe "PUT update" do
     describe "with valid params" do
+      before :each do
+        @article = FactoryGirl.create(:article) 
+        
+        @updated_attributes = { 
+          "body" => "This is the new body", 
+          "title" => "This is the new title",
+        }
+      end
+
       it "updates the requested article" do
-        article = articles(:test)
         # Assuming there are no other articles in the database, this
         # specifies that the Article created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Article.any_instance.should_receive(:update_attributes).with({ "category" => nil, "tags" => [], "url" => "MyString" })
-        put :update, {:id => article.to_param, :article => { "url" => "MyString" }}, valid_session
+        # updated_article = FactoryGirl.attributes_for(:article_post_params)
+
+        Article.any_instance.should_receive(:update_attributes).with(@updated_attributes)
+
+        put :update, {:id => @article.to_param, :article => @updated_attributes}, valid_session
       end
 
       it "assigns the requested article as @article" do
-        article = articles(:test)
-        put :update, {:id => article.to_param, :article => valid_attributes}, valid_session
-        assigns(:article).should eq(article)
+        put :update, {:id => @article.to_param, :article => @updated_attributes}, valid_session
+        assigns(:article).should eq(@article)
       end
 
       it "redirects to the article" do
-        article = articles(:test)
-        put :update, {:id => article.to_param, :article => valid_attributes}, valid_session
-        response.should redirect_to(article)
+        put :update, {:id => @article.to_param, :article => @updated_attributes}, valid_session
+        response.should redirect_to(@article)
       end
     end
 
     describe "with invalid params" do
+      before :each do
+        @article = FactoryGirl.create(:article) 
+        
+        @updated_attributes = { 
+          "body" => "This is the new body", 
+          "title" => "This is the new title",
+        }
+      end
+      
       it "assigns the article as @article" do
-        article = articles(:test)
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        put :update, {:id => article.to_param, :article => { "url" => "invalid value" }}, valid_session
-        assigns(:article).should eq(article)
+        put :update, {:id => @article.to_param, :article => { "url" => "invalid value" }}, valid_session
+        assigns(:article).should eq(@article)
       end
 
       it "re-renders the 'edit' template" do
-        article = articles(:test)
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        put :update, {:id => article.to_param, :article => { "url" => "invalid value" }}, valid_session
+        put :update, {:id => @article.to_param, :article => { "url" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -190,16 +182,18 @@ describe ArticlesController, :type => :controller do
 
 
   describe "DELETE destroy" do
+    before :each do
+      @article = FactoryGirl.create(:article) 
+    end
+
     it "destroys the requested article" do
-      article = articles(:test)
       expect {
-        delete :destroy, {:id => article.to_param}, valid_session
+        delete :destroy, {:id => @article.to_param}, valid_session
       }.to change(Article, :count).by(-1)
     end
 
     it "redirects to the articles list" do
-      article = articles(:test)
-      delete :destroy, {:id => article.to_param}, valid_session
+      delete :destroy, {:id => @article.to_param}, valid_session
       response.should redirect_to(articles_url)
     end
   end

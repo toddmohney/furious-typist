@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   # load_and_authorize_resource
 
-  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+  # before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
@@ -46,9 +46,6 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-
-    binding.pry 
-
     @category = nil
     @tags = []
 
@@ -104,6 +101,8 @@ class ArticlesController < ApplicationController
           @tags << Tag.find_or_create_by_name(tag.downcase)
         end
       end
+      
+      params[:article][:tags] = @tags
     end
 
     unless params[:article][:category] == nil || params[:article][:category].empty?
@@ -111,11 +110,9 @@ class ArticlesController < ApplicationController
 
       # parse the category from the params
       @category = Category.find_or_create_by_name(@category_name.downcase)
+      # replace the tags attribute in params
+      params[:article][:category] = @category
     end
-
-    # replace the tags attribute in params
-    params[:article][:category] = @category
-    params[:article][:tags] = @tags
 
     @article = Article.find(params[:id])
 
