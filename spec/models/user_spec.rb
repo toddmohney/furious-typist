@@ -79,7 +79,7 @@ describe User do
     @user = User.new({ :username => "some_new_user",
                        :email => "test.test.com",
                        :first_name => "todd",
-                       :last_name => "moh-ney"
+                       :last_name => "moh&ney"
                      })
 
     expect(@user).to have(1).error_on(:last_name)
