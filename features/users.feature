@@ -11,3 +11,15 @@ Feature: Users
     And I click on the user's name
 
     Then I should see my user details
+
+  Scenario: Editing a user profile
+    Given There is a registered user
+
+    When I go to the "edit profile" page
+
+    Then I should be able to edit the first name field
+    And I should be able to edit the last name field
+
+    But I should not be able to edit the username field
+    And I should not be able to edit the email field
+    And I should not be able to edit the email validated field
