@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe User do
-  fixtures :users
-
-
   it "fails validation without a username" do
     expect(User.new).to have(1).error_on(:username)
   end
@@ -148,44 +145,19 @@ describe User do
     expect(@user).to have(0).errors
   end
 
-  #it "fails validation with a non-alphanumeric username" do
-  #  @user = User.new({ :username => "todd!@#mohney",
-  #                     :email => "toddmohney@gmail.com",
-  #                     :first_name => "todd",
-  #                     :last_name => "mohney"})
-  #
-  #  expect(@user).to have(1).error_on(:username)
-  #end
-  #
-  #it "fails validation if the username is < 4 or < 64 characters in length" do
-  #  @user = User.new({ :username => "tes",
-  #                     :email => "toddmohney@gmail.com",
-  #                     :first_name => "todd",
-  #                     :last_name => "mohney"})
-  #
-  #  expect(@user).to have(1).error_on(:username)
-  #
-  #  @user = User.new({ :username => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  #                     :email => "toddmohney@gmail.com",
-  #                     :first_name => "todd",
-  #                     :last_name => "mohney"})
-  #
-  #  expect(@user).to have(1).error_on(:username)
-  #end
-
-  it "passes validation using a valid fixture" do
-    @user = users(:todd)
-    expect(@user).to have(0).errors
+  it "has a valid factory" do
+    user = FactoryGirl.create(:user)
+    user.should be_valid 
   end
 end
 
 
 # test method 'full_name'
 describe User, "#full_name" do
-  fixtures :users
-
   it "returns the user's first name, a space, then last name" do
-    @user = users(:todd)
-    expect(@user.full_name).to eq('todd mohney')
+    user = FactoryGirl.build(:user);
+    fullname = "#{user.first_name} #{user.last_name}"
+
+    expect(user.full_name).to eq(fullname)
   end
 end

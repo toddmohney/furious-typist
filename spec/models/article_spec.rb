@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe Article do
-  fixtures :articles
 
-  # Attribute Validation Tests
-  # ------------------------------------
   it "fails validation with no body" do
     expect(Article.new).to have(1).error_on(:body)
   end
@@ -30,8 +27,8 @@ describe Article do
   end
 
 
-  it "has a valid fixture" do
-    articles(:test)
+  it "has a valid factory" do
+    FactoryGirl.create(:article).should be_valid
   end
 
   it "has count+1 Articles after creation" do

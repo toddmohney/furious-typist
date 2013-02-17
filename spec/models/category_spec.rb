@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Category do
-  fixtures :categories
-
   it "fails validation without a name" do
     expect(Category.new).to have(1).error_on(:name)
   end
@@ -16,9 +14,8 @@ describe Category do
                           :description => "test description" })).to have(0).errors
   end
 
-  it "has a valid testing fixture" do
-    @cat = categories(:tech)
-    expect(@cat).to have(0).errors
+  it "has a valid factory" do
+    FactoryGirl.create(:category).should be_valid
   end
 
 end

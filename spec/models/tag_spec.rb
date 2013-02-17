@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Tag do
-  fixtures :tags
-
   it "fails validation without a name" do
     expect(Tag.new).to have(1).error_on(:name)
   end
@@ -15,8 +13,7 @@ describe Tag do
     expect(Tag.new({ :name => 'new post' })).to have(0).errors
   end
 
-  it "has a valid testing fixture" do
-    @tag = tags(:neat_post)
-    expect(@tag).to have(0).errors
+  it "has a valid factory" do
+    expect(FactoryGirl.create(:tag)).to be_valid 
   end
 end
