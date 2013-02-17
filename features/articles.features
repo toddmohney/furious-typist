@@ -1,6 +1,0 @@
-Feature: Articles
-  Scenario: Viewing a list of articles
-    Given I am an unauthenticated user
-
-    When I am on the "Articles" page
-    Then I should see a list of published articles
