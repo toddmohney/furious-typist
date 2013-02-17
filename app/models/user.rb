@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
         end
       end
 
-      if name =~ /[^A-Za-z'-]/
+      if name =~ /[^A-Za-z']/
         return " has invalid characters"
       end
     end

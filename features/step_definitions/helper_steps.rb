@@ -30,6 +30,8 @@ module StepHelpers
       users_path
     when "user profile"
       user_path(@user)
+    when "edit profile"
+      edit_user_path(@user)
     else
       "Page route not defined. (helper_steps.rb)"
     end

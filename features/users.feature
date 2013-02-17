@@ -17,9 +17,8 @@ Feature: Users
 
     When I go to the "edit profile" page
 
-    Then I should be able to edit the first name field
-    And I should be able to edit the last name field
-
-    But I should not be able to edit the username field
+    Then I should not be able to edit the username field
     And I should not be able to edit the email field
     And I should not be able to edit the email validated field
+    But I should be able to edit the first and last name fields
+
