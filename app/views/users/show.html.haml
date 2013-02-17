@@ -1,0 +1,41 @@
+%p{:id => "notice"}
+  = notice
+
+%p
+  %b Username:
+  %span.username= @user.username
+
+
+%p
+  %b Email:
+  %span.email= @user.email
+
+
+%p
+  %b Is email validated:
+  %span.email-is-validated= @user.is_email_validated
+
+
+%p
+  %b First name:
+  %span.first-name= @user.first_name
+
+
+%p
+  %b Last name:
+  %span.last-name= @user.last_name
+
+
+%p
+  %b Is enabled:
+  %span.is-enabled= @user.is_enabled
+
+
+%p
+  %b Is deleted:
+  %span.is-deleted= @user.is_deleted
+
+
+
+= link_to 'Edit', edit_user_path(@user) |
+= link_to 'Back', users_path
