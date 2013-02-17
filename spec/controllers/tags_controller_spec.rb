@@ -20,8 +20,6 @@ require 'spec_helper'
 
 describe TagsController do
 
-  fixtures :tags
-
   # This should return the minimal set of attributes required to create a valid
   # Tag. As you add validations to Tag, be sure to
   # update the return value of this method accordingly.
@@ -38,17 +36,29 @@ describe TagsController do
 
   describe "GET index" do
     it "assigns all tags as @tags" do
-      tag = tags(:neat_post)
+      tag = FactoryGirl.create(:tag)
       get :index, {}, valid_session
-      assigns(:tags).should eq([tag])
+      assigns(:tags).include?(tag).should eq(true)
+    end
+
+    it "renders the index template" do
+      tag = FactoryGirl.create(:tag)
+      get :index, {}, valid_session
+      expect(response).to render_template("index")
     end
   end
 
   describe "GET show" do
     it "assigns the requested tag as @tag" do
-      tag = Tag.create! valid_attributes
+      tag = FactoryGirl.create(:tag)
       get :show, {:id => tag.to_param}, valid_session
       assigns(:tag).should eq(tag)
+    end
+
+    it "renders the show template" do
+      tag = FactoryGirl.create(:tag)
+      get :show, {:id => tag.to_param}, valid_session
+      expect(response).to render_template("show")
     end
   end
 
@@ -57,13 +67,24 @@ describe TagsController do
       get :new, {}, valid_session
       assigns(:tag).should be_a_new(Tag)
     end
+
+    it "renders the new template" do
+      get :new, {}, valid_session
+      expect(response).to render_template("new")
+    end
   end
 
   describe "GET edit" do
     it "assigns the requested tag as @tag" do
-      tag = Tag.create! valid_attributes
+      tag = FactoryGirl.create(:tag)
       get :edit, {:id => tag.to_param}, valid_session
       assigns(:tag).should eq(tag)
+    end
+
+    it "renders the edit template" do
+      tag = FactoryGirl.create(:tag)
+      get :edit, {:id => tag.to_param}, valid_session
+      expect(response).to render_template("edit")
     end
   end
 
@@ -107,7 +128,7 @@ describe TagsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested tag" do
-        tag = Tag.create! valid_attributes
+        tag = FactoryGirl.create(:tag)
         # Assuming there are no other tags in the database, this
         # specifies that the Tag created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -117,13 +138,13 @@ describe TagsController do
       end
 
       it "assigns the requested tag as @tag" do
-        tag = Tag.create! valid_attributes
+        tag = FactoryGirl.create(:tag)
         put :update, {:id => tag.to_param, :tag => valid_attributes}, valid_session
         assigns(:tag).should eq(tag)
       end
 
       it "redirects to the tag" do
-        tag = Tag.create! valid_attributes
+        tag = FactoryGirl.create(:tag)
         put :update, {:id => tag.to_param, :tag => valid_attributes}, valid_session
         response.should redirect_to(tag)
       end
@@ -131,7 +152,7 @@ describe TagsController do
 
     describe "with invalid params" do
       it "assigns the tag as @tag" do
-        tag = Tag.create! valid_attributes
+        tag = FactoryGirl.create(:tag)
         # Trigger the behavior that occurs when invalid params are submitted
         Tag.any_instance.stub(:save).and_return(false)
         put :update, {:id => tag.to_param, :tag => { "name" => "invalid value" }}, valid_session
@@ -139,7 +160,7 @@ describe TagsController do
       end
 
       it "re-renders the 'edit' template" do
-        tag = Tag.create! valid_attributes
+        tag = FactoryGirl.create(:tag)
         # Trigger the behavior that occurs when invalid params are submitted
         Tag.any_instance.stub(:save).and_return(false)
         put :update, {:id => tag.to_param, :tag => { "name" => "invalid value" }}, valid_session
@@ -150,14 +171,14 @@ describe TagsController do
 
   describe "DELETE destroy" do
     it "destroys the requested tag" do
-      tag = Tag.create! valid_attributes
+      tag = FactoryGirl.create(:tag)
       expect {
         delete :destroy, {:id => tag.to_param}, valid_session
       }.to change(Tag, :count).by(-1)
     end
 
     it "redirects to the tags list" do
-      tag = Tag.create! valid_attributes
+      tag = FactoryGirl.create(:tag)
       delete :destroy, {:id => tag.to_param}, valid_session
       response.should redirect_to(tags_url)
     end

@@ -20,7 +20,7 @@ require 'spec_helper'
 
 describe UsersController do
 
-  fixtures :users
+  # fixtures :users
 
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
@@ -38,113 +38,66 @@ describe UsersController do
 
   describe "GET index" do
     it "assigns all users as @users" do
-      user = users(:todd)
-      get :index, {}, valid_session
-      assigns(:users).should eq([user])
+      user = FactoryGirl.create(:user)
+      get :index, {}
+      @temp = assigns(:users)
+      @temp.include?(user).should eq(true)
+    end
+
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template(:index)
     end
   end
 
   describe "GET show" do
     it "assigns the requested user as @user" do
-      user = users(:todd)
-      get :show, {:id => user.to_param}, valid_session
+      user = FactoryGirl.create(:user) 
+      get :show, {:id => user.to_param}
       assigns(:user).should eq(user)
     end
-  end
 
-  describe "GET new" do
-    it "assigns a new user as @user" do
-      get :new, {}, valid_session
-      assigns(:user).should be_a_new(User)
+    it "renders the show template" do
+      user = FactoryGirl.create(:user)
+      get :show, {:id => user.to_param}
+      expect(response).to render_template("show")
     end
   end
 
   describe "GET edit" do
     it "assigns the requested user as @user" do
-      user = users(:todd)
-      get :edit, {:id => user.to_param}, valid_session
+      user = FactoryGirl.create(:user)
+      get :edit, {:id => user.to_param}
       assigns(:user).should eq(user)
     end
-  end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new User" do
-        expect {
-          post :create, {
-                          :user => {
-                              :username => "test name",
-                              :email => "test@test.com",
-                              :first_name => "test",
-                              :last_name => "test"
-                          }
-                        }, valid_session
-        }.to change(User, :count).by(1)
-      end
-
-      it "assigns a newly created user as @user" do
-        post :create, {
-            :user => {
-                :username => "test name",
-                :email => "test@test.com",
-                :first_name => "test",
-                :last_name => "test"
-            }
-        }, valid_session
-        assigns(:user).should be_a(User)
-        assigns(:user).should be_persisted
-      end
-
-      it "redirects to the created user" do
-        post :create, {
-            :user => {
-                :username => "test name",
-                :email => "test@test.com",
-                :first_name => "test",
-                :last_name => "test"
-            }
-        }, valid_session
-        response.should redirect_to(User.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved user as @user" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => { "username" => "invalid value" }}, valid_session
-        assigns(:user).should be_a_new(User)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => { "username" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
+    it "renders the edit template" do
+      user = FactoryGirl.create(:user)
+      get :edit, {:id => user.to_param}
+      expect(response).to render_template("edit")
     end
   end
 
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested user" do
-        user = users(:todd)
+        user = FactoryGirl.create(:user)
         # Assuming there are no other users in the database, this
         # specifies that the User created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         User.any_instance.should_receive(:update_attributes).with({ "username" => "MyString" })
-        put :update, {:id => user.to_param, :user => { "username" => "MyString" }}, valid_session
+        put :update, {:id => user.to_param, :user => { "username" => "MyString" }}
       end
 
       it "assigns the requested user as @user" do
-        user = users(:todd)
-        put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
+        user = FactoryGirl.create(:user)
+        put :update, {:id => user.to_param, :user => valid_attributes}
         assigns(:user).should eq(user)
       end
 
       it "redirects to the user" do
-        user = users(:todd)
+        user = FactoryGirl.create(:user)
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
         response.should redirect_to(user)
       end
@@ -152,7 +105,7 @@ describe UsersController do
 
     describe "with invalid params" do
       it "assigns the user as @user" do
-        user = users(:todd)
+        user = FactoryGirl.create(:user)
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
         put :update, {:id => user.to_param, :user => { "username" => "invalid value" }}, valid_session
@@ -160,7 +113,7 @@ describe UsersController do
       end
 
       it "re-renders the 'edit' template" do
-        user = users(:todd)
+        user = FactoryGirl.create(:user)
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
         put :update, {:id => user.to_param, :user => { "username" => "invalid value" }}, valid_session
@@ -171,14 +124,14 @@ describe UsersController do
 
   describe "DELETE destroy" do
     it "destroys the requested user" do
-      user = users(:todd)
+      user = FactoryGirl.create(:user)
       expect {
         delete :destroy, {:id => user.to_param}, valid_session
       }.to change(User, :count).by(-1)
     end
 
     it "redirects to the users list" do
-      user = users(:todd)
+      user = FactoryGirl.create(:user)
       delete :destroy, {:id => user.to_param}, valid_session
       response.should redirect_to(users_url)
     end

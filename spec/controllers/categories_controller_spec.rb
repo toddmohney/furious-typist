@@ -20,8 +20,6 @@ require 'spec_helper'
 
 describe CategoriesController do
 
-  fixtures :categories
-
   # This should return the minimal set of attributes required to create a valid
   # Category. As you add validations to Category, be sure to
   # update the return value of this method accordingly.
@@ -38,17 +36,28 @@ describe CategoriesController do
 
   describe "GET index" do
     it "assigns all categories as @categories" do
-      category = categories(:tech)
+      category = FactoryGirl.create(:category)
       get :index, {}, valid_session
       assigns(:categories).should eq([category])
+    end
+    
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template(:index)
     end
   end
 
   describe "GET show" do
     it "assigns the requested category as @category" do
-      category = categories(:tech)
+      category = FactoryGirl.create(:category)
       get :show, {:id => category.to_param}, valid_session
       assigns(:category).should eq(category)
+    end
+    
+    it "renders the show template" do
+      user = FactoryGirl.create(:category)
+      get :show, {:id => user.to_param}
+      expect(response).to render_template("show")
     end
   end
 
@@ -57,13 +66,24 @@ describe CategoriesController do
       get :new, {}, valid_session
       assigns(:category).should be_a_new(Category)
     end
+    
+    it "renders the new template" do
+      get :new, {}, valid_session
+      expect(response).to render_template("new")
+    end
   end
 
   describe "GET edit" do
     it "assigns the requested category as @category" do
-      category = categories(:tech)
+      category = FactoryGirl.create(:category)
       get :edit, {:id => category.to_param}, valid_session
       assigns(:category).should eq(category)
+    end
+    
+    it "renders the edit template" do
+      tag = FactoryGirl.create(:category)
+      get :edit, {:id => tag.to_param}, valid_session
+      expect(response).to render_template("edit")
     end
   end
 
@@ -122,7 +142,7 @@ describe CategoriesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested category" do
-        category = categories(:tech)
+        category = FactoryGirl.create(:category)
         # Assuming there are no other categories in the database, this
         # specifies that the Category created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -132,13 +152,13 @@ describe CategoriesController do
       end
 
       it "assigns the requested category as @category" do
-        category = categories(:tech)
+        category = FactoryGirl.create(:category)
         put :update, {:id => category.to_param, :category => valid_attributes}, valid_session
         assigns(:category).should eq(category)
       end
 
       it "redirects to the category" do
-        category = categories(:tech)
+        category = FactoryGirl.create(:category)
         put :update, {:id => category.to_param, :category => valid_attributes}, valid_session
         response.should redirect_to(category)
       end
@@ -146,7 +166,7 @@ describe CategoriesController do
 
     describe "with invalid params" do
       it "assigns the category as @category" do
-        category = categories(:tech)
+        category = FactoryGirl.create(:category)
         # Trigger the behavior that occurs when invalid params are submitted
         Category.any_instance.stub(:save).and_return(false)
         put :update, {:id => category.to_param, :category => { "name" => "invalid value" }}, valid_session
@@ -154,7 +174,7 @@ describe CategoriesController do
       end
 
       it "re-renders the 'edit' template" do
-        category = categories(:tech)
+        category = FactoryGirl.create(:category)
         # Trigger the behavior that occurs when invalid params are submitted
         Category.any_instance.stub(:save).and_return(false)
         put :update, {:id => category.to_param, :category => { "name" => "invalid value" }}, valid_session
@@ -165,14 +185,14 @@ describe CategoriesController do
 
   describe "DELETE destroy" do
     it "destroys the requested category" do
-      category = categories(:tech)
+      category = FactoryGirl.create(:category)
       expect {
         delete :destroy, {:id => category.to_param}, valid_session
       }.to change(Category, :count).by(-1)
     end
 
     it "redirects to the categories list" do
-      category = categories(:tech)
+      category = FactoryGirl.create(:category)
       delete :destroy, {:id => category.to_param}, valid_session
       response.should redirect_to(categories_url)
     end
