@@ -70,21 +70,7 @@ class User < ActiveRecord::Base
 
 
     def validate_username_format
-      #if username.blank?
-      #  return errors.add(:username, "username is blank")
-      #end
-      #
-      #if username.length < 4
-      #  return errors.add(:username, " is too short")
-      #end
-      #
-      #if username.length > 64
-      #  return errors.add(:username, " is too long")
-      #end
-      #
-      #if username =~ /[^A-Za-z0-9]/
-      #  return errors.add(:username, " has some invalid characters")
-      #end
+    
     end
 
 

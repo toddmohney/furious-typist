@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  # load_and_authorize_resource
 
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
@@ -45,6 +46,9 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+
+    binding.pry 
+
     @category = nil
     @tags = []
 
