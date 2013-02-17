@@ -9,6 +9,10 @@ When /^I go to the "(.*?)" page$/ do |page|
 end
 
 
+When /^I go to my "(.*?)" page$/ do |page|
+  visit path_to(page)
+end
+
 module StepHelpers
   def current_path
     URI.parse(current_url).path
@@ -22,6 +26,10 @@ module StepHelpers
       new_user_session_path
     when "sign out"
       destroy_user_session_path
+    when "users"
+      users_path
+    when "user profile"
+      user_path(@user)
     else
       "Page route not defined. (helper_steps.rb)"
     end
