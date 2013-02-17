@@ -26,20 +26,33 @@ describe ArticlesController, :type => :controller do
   end
 
   describe "GET index" do
-    it "assigns all articles as @articles" do
-      article = FactoryGirl.create(:article)
+    before :each do
+      @test_article = FactoryGirl.create(:article)
       get :index, {}, valid_session
-      articles = assigns(:articles)
-      articles.include?(article).should eq(true)
+    end
+    
+    it "assigns all articles as @articles" do
+      assigns(:articles).should include @test_article
+    end
+
+    it "renders the index template" do
+      expect(response).to render_template("index")  
     end
   end
 
 
   describe "GET show" do
+    before :each do
+      @test_article = FactoryGirl.create(:article)
+      get :show, {:id => @test_article.to_param}, valid_session
+    end
+    
     it "assigns the requested article as @article" do
-      article = FactoryGirl.create(:article) 
-      get :show, {:id => article.to_param}, valid_session
-      assigns(:article).should eq(article)
+      assigns(:article).should eq(@test_article)
+    end
+
+    it "should render the show template" do
+      expect(response).to render_template("show")
     end
   end
 
@@ -49,6 +62,11 @@ describe ArticlesController, :type => :controller do
     it "assigns a new article as @article" do
       get :new, {}, valid_session
       assigns(:article).should be_a_new(Article)
+    end
+
+    it "should render the new template" do
+      get :new, {}, valid_session
+      expect(response).to render_template("new")
     end
   end
 
