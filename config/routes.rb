@@ -7,7 +7,11 @@ Furioustypist::Application.routes.draw do
   resources :tags
 
 
-  resources :users
+  resources :users, :only => [:index,
+                              :show, 
+                              :edit, 
+                              :update, 
+                              :destroy]
 
 
   match "articles/ajaxcall" => "articles#ajaxcall", :via => [:get]
