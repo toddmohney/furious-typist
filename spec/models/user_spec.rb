@@ -18,7 +18,7 @@ describe User do
   end
 
   it "fails validation without an email address" do
-    expect(User.new).to have(1).error_on(:email)
+    expect(User.new).to have(2).errors_on(:email)
   end
 
   it "passes validation with an email address" do
