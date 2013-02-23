@@ -22,6 +22,8 @@ module StepHelpers
     case page.downcase
     when "articles"
       articles_path
+    when "article creation"
+      new_article_path
     when "sign in"
       new_user_session_path
     when "sign out"

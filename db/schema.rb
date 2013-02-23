@@ -17,17 +17,10 @@ ActiveRecord::Schema.define(:version => 20130209150307) do
     t.string   "url"
     t.string   "title"
     t.string   "body"
+    t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "category_id"
   end
-
-  create_table "articles_categories", :id => false, :force => true do |t|
-    t.integer "article_id",  :null => false
-    t.integer "category_id", :null => false
-  end
-
-  add_index "articles_categories", ["article_id", "category_id"], :name => "index_articles_categories_on_article_id_and_category_id", :unique => true
 
   create_table "articles_tags", :id => false, :force => true do |t|
     t.integer "article_id", :null => false
