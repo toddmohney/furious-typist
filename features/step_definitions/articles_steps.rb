@@ -30,10 +30,34 @@ When /^I fill out the article creation form$/ do
   end
 end
 
-When /^I submit the form$/ do
-  click_on "Create Article"
-end
-
 Then /^I should see my article$/ do
   page.should have_content("Article was successfully created.")
+end
+
+Given /^There is an existing article$/ do
+  # ensure idempotency by only creating an article IVAR
+  # if one does not already exist
+  @article ||= FactoryGirl.create(:article)
+end
+
+Then /^I should see the article edit form$/ do
+  page.should have_content("Editing article")
+end
+
+When /^I fill out the article edit form$/ do
+  @edited_article = FactoryGirl.build(:article)
+
+  # ensure the factory built, but did not create 
+  # a new article
+  Article.all.count.should eq(1)
+
+  page.fill_in "article_title", :with => @edited_article.title
+  page.fill_in "article_body", :with => @edited_article.body.join
+end
+
+Then /^I should see my updated article$/ do
+  page.should have_content("Article was successfully updated.")
+
+  page.should have_content(@edited_article.title)
+  page.should have_content(@edited_article.body.join)
 end

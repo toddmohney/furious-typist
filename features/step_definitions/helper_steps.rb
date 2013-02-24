@@ -13,6 +13,10 @@ When /^I go to my "(.*?)" page$/ do |page|
   visit path_to(page)
 end
 
+When /^I click on the "(.*?)" button$/ do |click_tgt|
+  click_button(click_tgt)
+end
+
 Then /^I should be on the "([^"]*)"( [\w]*)? page$/ do |page_name, format|
   start = Time.now
   while true
@@ -40,6 +44,8 @@ module StepHelpers
       articles_path
     when "article creation"
       new_article_path
+    when "edit article"
+      edit_article_path(@article)
     when "sign in"
       new_user_session_path
     when "sign out"
