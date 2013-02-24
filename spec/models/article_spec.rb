@@ -41,4 +41,15 @@ describe Article do
     expect(Article.count).to eq(count + 1)
   end
 
+  describe "#markdown" do
+    it "returns the html representation of body content written in Markdown" do
+      article = Article.new({
+        :title => "test title",
+        :body => "+ list item",
+        :url => "http://stub.com"
+      })
+
+      expect(article.markdown).to eq("<ul>\n<li>list item</li>\n</ul>\n")
+    end
+  end
 end
