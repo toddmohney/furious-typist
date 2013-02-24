@@ -14,40 +14,36 @@ gem 'json'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-
+  gem 'sass-rails',   '~> 3.2.3'
   gem "select2-rails"
+  gem 'uglifier', '>= 1.0.3'
 end
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.4"
+  gem 'factory_girl_rails'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-doc'
-  gem 'factory_girl_rails'
+  gem "rspec-rails", "~> 2.4"
 end
 
 group :test do
   # gem 'ruby-debug'
-  gem 'faker'
   gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'guard-rspec'
+  gem 'faker'
   gem 'launchy'
 end
 
 # gem 'linecache19'
-gem 'jquery-rails'
-gem 'haml'
+gem 'cancan'
 gem 'devise'
 gem 'database_cleaner'
-gem 'cancan'
+gem 'haml'
+gem 'jquery-rails'
+gem 'simple_form'
 
 
 # To use ActiveModel has_secure_password
