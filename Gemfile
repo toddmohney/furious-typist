@@ -18,6 +18,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem "select2-rails"
   gem 'uglifier', '>= 1.0.3'
+  gem 'zurb-foundation', '~> 2.2'
 end
 
 group :test, :development do
