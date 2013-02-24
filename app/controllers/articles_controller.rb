@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   # load_and_authorize_resource
 
-  # before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
