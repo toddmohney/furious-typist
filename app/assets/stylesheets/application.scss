@@ -9,9 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- //= require foundation
+ *= require foundation
  *= require_tree .
  *= require select2
+
  */
 
 $title_color: #3b3b3b;
