@@ -11,7 +11,6 @@ When /^I click on the user's name$/ do
 end
 
 Then /^I should see my user details$/ do
-  page.find('.username').text.should == @user.username
   page.find('.email').text.should == @user.email
 end
 
