@@ -6,7 +6,7 @@ describe ArticlesController, :type => :controller do
   # Article. As you add validations to Article, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "url" => "MyString" }
+
   end
 
   describe "GET index" do
@@ -90,14 +90,14 @@ describe ArticlesController, :type => :controller do
       it "assigns a newly created but unsaved article as @article" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        post :create, {:article => { "url" => "invalid value" }}
+        post :create, {:article => { "title" => "invalid value" }}
         assigns(:article).should be_a_new(Article)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        post :create, {:article => { "url" => "invalid value" }}
+        post :create, {:article => { "title" => "invalid value" }}
         response.should render_template("new")
       end
     end
@@ -151,14 +151,14 @@ describe ArticlesController, :type => :controller do
       it "assigns the article as @article" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        put :update, {:id => @article.to_param, :article => { "url" => "invalid value" }}
+        put :update, {:id => @article.to_param, :article => { "title" => "invalid value" }}
         assigns(:article).should eq(@article)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
-        put :update, {:id => @article.to_param, :article => { "url" => "invalid value" }}
+        put :update, {:id => @article.to_param, :article => { "title" => "invalid value" }}
         response.should render_template("edit")
       end
     end

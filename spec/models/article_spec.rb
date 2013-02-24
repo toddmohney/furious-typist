@@ -10,10 +10,6 @@ describe Article do
     expect(Article.new).to have(1).error_on(:title)
   end
 
-  it "fails validation without a url" do
-    expect(Article.new).to have(1).error_on(:url)
-  end
-
   it "passes validation with a body attribute" do
     expect(Article.new({ :body => "sample body" })).to have(0).errors_on(:body)
   end
@@ -21,11 +17,6 @@ describe Article do
   it "passes validation with a title attribute" do
     expect(Article.new({ :title => "sample title" })).to have(0).errors_on(:title)
   end
-
-  it "passes validation with a url attribute" do
-    expect(Article.new({ :url => "http://google.com" })).to have(0).errors_on(:url)
-  end
-
 
   it "has a valid factory" do
     FactoryGirl.create(:article).should be_valid
@@ -35,8 +26,7 @@ describe Article do
     count = Article.find(:all).count
 
     Article.create({ :body => "Sample body",
-                     :title => "Sample title",
-                     :url => "http://gmail.com/" })
+                     :title => "Sample title" })
 
     expect(Article.count).to eq(count + 1)
   end
@@ -45,8 +35,7 @@ describe Article do
     it "returns the html representation of body content written in Markdown" do
       article = Article.new({
         :title => "test title",
-        :body => "+ list item",
-        :url => "http://stub.com"
+        :body => "+ list item"
       })
 
       expect(article.markdown).to eq("<ul>\n<li>list item</li>\n</ul>\n")

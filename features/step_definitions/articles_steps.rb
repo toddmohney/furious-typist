@@ -22,7 +22,6 @@ end
 
 When /^I fill out the article creation form$/ do
   within("#new_article") do
-    page.fill_in "article_url", :with => Faker::Internet.url
     page.fill_in "article_title", :with => Faker::Lorem.words(5).join(" ")
     page.fill_in "article_body", :with => Faker::Lorem.paragraphs(5).join(" ")
     page.fill_in "article_category", :with => Faker::Lorem.word
