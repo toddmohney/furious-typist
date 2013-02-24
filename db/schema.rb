@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209150307) do
+ActiveRecord::Schema.define(:version => 20130224205948) do
 
   create_table "articles", :force => true do |t|
-    t.string   "url"
     t.string   "title"
     t.string   "body"
     t.integer  "category_id"
