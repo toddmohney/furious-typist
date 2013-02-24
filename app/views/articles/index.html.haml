@@ -19,7 +19,7 @@
         = article.created_at.to_formatted_s(:db)
 
     .article-body
-      = article.body.html_safe
+      = article.markdown
 
     .article-tags
       %em

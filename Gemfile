@@ -39,6 +39,7 @@ group :test do
 end
 
 # gem 'linecache19'
+gem 'bluecloth'
 gem 'cancan'
 gem 'devise'
 gem 'database_cleaner'
