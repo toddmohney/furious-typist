@@ -17,18 +17,14 @@ class Article < ActiveRecord::Base
   end
 
   def get_tag_names
-    @tag_list = ""
+    @tag_names = []
 
     unless tags.blank?
       tags.each do |t|
-        @tag_list << t.name << ", "
-      end
-
-      if @tag_list.end_with?(", ")
-        @tag_list = @tag_list[0..-2]
+        @tag_names << t.name
       end
     end
 
-    @tag_list
+    @tag_names.join(", ")
   end
 end
