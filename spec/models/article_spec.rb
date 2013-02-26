@@ -1,34 +1,28 @@
 require 'spec_helper'
 
 describe Article do
+  describe "validation" do
+    it "fails validation with no body" do
+      expect(Article.new).to have(1).error_on(:body)
+    end
 
-  it "fails validation with no body" do
-    expect(Article.new).to have(1).error_on(:body)
+    it "fails validation without a title" do
+      expect(Article.new).to have(1).error_on(:title)
+    end
+
+    it "passes validation with a body attribute" do
+      expect(Article.new({ :body => "sample body" })).to have(0).errors_on(:body)
+    end
+
+    it "passes validation with a title attribute" do
+      expect(Article.new({ :title => "sample title" })).to have(0).errors_on(:title)
+    end
   end
 
-  it "fails validation without a title" do
-    expect(Article.new).to have(1).error_on(:title)
-  end
-
-  it "passes validation with a body attribute" do
-    expect(Article.new({ :body => "sample body" })).to have(0).errors_on(:body)
-  end
-
-  it "passes validation with a title attribute" do
-    expect(Article.new({ :title => "sample title" })).to have(0).errors_on(:title)
-  end
-
-  it "has a valid factory" do
-    FactoryGirl.create(:article).should be_valid
-  end
-
-  it "has count+1 Articles after creation" do
-    count = Article.find(:all).count
-
-    Article.create({ :body => "Sample body",
-                     :title => "Sample title" })
-
-    expect(Article.count).to eq(count + 1)
+  describe "factories" do
+    it "has a valid factory" do
+      FactoryGirl.create(:article).should be_valid
+    end
   end
 
   describe "#markdown" do
@@ -39,6 +33,28 @@ describe Article do
       })
 
       expect(article.markdown).to eq("<ul>\n<li>list item</li>\n</ul>\n")
+    end
+  end
+
+  describe "#get_tag_names" do
+    context "when an article has no tags" do
+      let(:article) { Article.new({ body: "hey hey", title: "hi hi" }) }
+      
+      it "returns an empty string" do
+        article.get_tag_names.should eq("")
+      end
+    end
+
+    context "when an article has tags" do
+      let(:article) { Article.new({ body: "hey hey", title: "hi hi", tags: tags }) }
+      let(:tags) {[ 
+        Tag.new({ name: "tag_one" }),
+        Tag.new({ name: "tag_two" })  
+      ]}
+
+      it "returns a comma separated list of tags" do
+        article.get_tag_names.should eq("tag_one, tag_two")
+      end
     end
   end
 end
