@@ -3,6 +3,8 @@ class ArticlesController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
+  caches_action [:index, :show]
+
   # GET /articles
   # GET /articles.json
   def index
@@ -76,6 +78,8 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        expire_action :action => [:index, :show]
+
         format.html { redirect_to @article, :notice => 'Article was successfully created.' }
         format.json { render :json => @article, :status => :created, :location => @article }
       else
@@ -118,6 +122,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
+        expire_action :action => [:index, :show]
         format.html { redirect_to @article, :notice => 'Article was successfully updated.' }
         format.json { head :no_content }
       else

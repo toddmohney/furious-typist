@@ -5,9 +5,6 @@ describe ArticlesController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # Article. As you add validations to Article, be sure to
   # update the return value of this method accordingly.
-  def valid_attributes
-
-  end
 
   describe "GET index" do
     before :each do
@@ -24,7 +21,6 @@ describe ArticlesController, :type => :controller do
     end
   end
 
-
   describe "GET show" do
     before :each do
       @test_article = FactoryGirl.create(:article)
@@ -40,8 +36,6 @@ describe ArticlesController, :type => :controller do
     end
   end
 
-
-
   describe "GET new" do
     it "assigns a new article as @article" do
       get :new, {}
@@ -54,8 +48,6 @@ describe ArticlesController, :type => :controller do
     end
   end
 
-
-
   describe "GET edit" do
     it "assigns the requested article as @article" do
       article = FactoryGirl.create(:article)
@@ -63,7 +55,6 @@ describe ArticlesController, :type => :controller do
       assigns(:article).should eq(article)
     end
   end
-
 
   describe "POST create" do
     describe "with valid params" do
@@ -85,7 +76,6 @@ describe ArticlesController, :type => :controller do
       end
     end
 
-
     describe "with invalid params" do
       it "assigns a newly created but unsaved article as @article" do
         # Trigger the behavior that occurs when invalid params are submitted
@@ -102,7 +92,6 @@ describe ArticlesController, :type => :controller do
       end
     end
   end
-
 
   describe "PUT update" do
     describe "with valid params" do
