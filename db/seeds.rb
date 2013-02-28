@@ -15,6 +15,12 @@ Category.create(categories)
 
 tags = [
   { :name => "cool" },
-  { :name => "awesome" }  
+  { :name => "awesome" }
 ]
 Tag.create(tags)
+
+roles = [
+  { :name => "admin" },
+  { :name => "user" }
+]
+Role.create(roles)
