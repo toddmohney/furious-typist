@@ -2,18 +2,26 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :email,
+                  :password,
+                  :password_confirmation,
+                  :remember_me,
                   :first_name,
                   :is_deleted,
                   :is_email_validated,
                   :is_enabled,
                   :last_name,
                   :username
+
+  has_and_belongs_to_many :roles
 
   validates_presence_of :email
   validates_presence_of :username
@@ -22,8 +30,25 @@ class User < ActiveRecord::Base
   validate :email_validator
   validate :name_validator
 
+  after_initialize do |user|
+    unless user.roles.present?
+      # add a default role of "user" to a new user
+      user.roles << Role.where({ name: "user" })
+    end
+  end
+
   def full_name
     first_name + ' ' + last_name
+  end
+
+  def add_role(role)
+    unless roles.include?(role)
+      roles << role
+    end
+  end
+
+  def is_admin?
+    roles.include?(Role.admin)
   end
 
 
@@ -70,7 +95,7 @@ class User < ActiveRecord::Base
 
 
     def validate_username_format
-    
+
     end
 
 

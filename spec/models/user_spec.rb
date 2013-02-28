@@ -150,18 +150,70 @@ describe User do
   describe "factories" do
     it "has a valid factory" do
       user = FactoryGirl.create(:user)
-      user.should be_valid 
+      user.should be_valid
     end
   end
- 
+
   # test method 'full_name'
   describe "#full_name" do
-    let(:user) do 
+    let(:user) do
       stub_model User, :first_name => "todd", :last_name => "mohney"
     end
 
     it "returns the user's first name, a space, then last name" do
       user.full_name.should eq("todd mohney")
+    end
+  end
+
+  describe "#add_role" do
+    context "the user does not already have the role" do
+      it "should add the role to the user" do
+        user = User.new({ username: Faker::Name.name,
+                          email: Faker::Internet.email })
+
+        role_count = user.roles.length
+        user.add_role(Role.admin)
+
+        user.roles.include?(Role.admin).should eq(true)
+        user.roles.length.should eq(role_count + 1)
+      end
+    end
+
+    context "the user already has the role" do
+      let(:first_role) do
+        stub_model(Role)
+      end
+
+      it "should not add the role to the user" do
+        user = User.new({ username: Faker::Name.name,
+                          email: Faker::Internet.email })
+
+        user.add_role(first_role)
+        role_count = user.roles.length
+        user.add_role(first_role)
+
+        user.roles.include?(first_role).should eq(true)
+        user.roles.length.should eq(role_count)
+      end
+    end
+  end
+
+  describe "#is_admin?" do
+    context "user is not an admin" do
+      it "should return false" do
+        user = User.new({ username: Faker::Name.name, email: Faker::Internet.email })
+        user.is_admin?.should be_false
+      end
+    end
+
+    context "user is an admin" do
+      it "should return true" do
+        user = User.new({ username: Faker::Name.name,
+                          email: Faker::Internet.email })
+        user.add_role(Role.admin)
+
+        user.is_admin?.should be_true
+      end
     end
   end
 end
