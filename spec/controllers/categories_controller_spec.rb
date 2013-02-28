@@ -12,11 +12,11 @@ describe CategoriesController do
 
   describe "GET index" do
     it "assigns all categories as @categories" do
-      category = FactoryGirl.create(:category)
+      all_categories = Category.all
       get :index, {}
-      assigns(:categories).should eq([category])
+      assigns(:categories).should eq(all_categories)
     end
-    
+
     it "renders the index template" do
       get :index
       expect(response).to render_template(:index)
@@ -29,7 +29,7 @@ describe CategoriesController do
       get :show, {:id => category.to_param}
       assigns(:category).should eq(category)
     end
-    
+
     it "renders the show template" do
       user = FactoryGirl.create(:category)
       get :show, {:id => user.to_param}
@@ -42,7 +42,7 @@ describe CategoriesController do
       get :new, {}
       assigns(:category).should be_a_new(Category)
     end
-    
+
     it "renders the new template" do
       get :new, {}
       expect(response).to render_template("new")
@@ -55,7 +55,7 @@ describe CategoriesController do
       get :edit, {:id => category.to_param}
       assigns(:category).should eq(category)
     end
-    
+
     it "renders the edit template" do
       tag = FactoryGirl.create(:category)
       get :edit, {:id => tag.to_param}
