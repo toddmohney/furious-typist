@@ -7,9 +7,6 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
-gem 'json'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +24,7 @@ group :test, :development do
   gem 'pry-nav'
   gem 'pry-doc'
   gem "rspec-rails", "~> 2.4"
+  gem 'sqlite3'
 end
 
 group :test do
@@ -45,6 +43,7 @@ gem 'devise'
 gem 'database_cleaner'
 gem 'haml'
 gem 'jquery-rails'
+gem 'json'
 gem 'simple_form'
 gem 'thin'
 
