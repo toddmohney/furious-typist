@@ -1,6 +1,6 @@
 
 -if can? :create, @article
-  = link_to('New Article', 
+  = link_to('New Article',
             new_article_path,
             :class => "new-article")
 
@@ -8,11 +8,11 @@
 %br
 %br
 
-- @articles.each do |article| 
+- @articles.each do |article|
   .article-container
     .article-title
       = link_to article.title, article
-    
+
 
     .article-create-date
       - unless article.created_at.blank?
@@ -23,21 +23,21 @@
 
     .article-tags
       %em
-        %strong 
-          category: 
+        %strong
+          category:
           - unless article.category.blank?
             %span= article.category.name
 
     .article-tags
       %em
-        %strong 
-          tags: 
+        %strong
+          tags:
           - article.tags.each do |t|
             %span= t.name + ' '
-  
-    .admin-article
-      = link_to 'Edit', edit_article_path(article)
-      = link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    - if can? :edit, @article
+      .admin-article
+        = link_to 'Edit', edit_article_path(article)
+        = link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   .article-spacer
 

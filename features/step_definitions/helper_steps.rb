@@ -79,6 +79,17 @@ module AuthenticationHelpers
     # the user has now been redirected to the home page
     raise "Failed to log in" unless page.has_selector?(".username")
   end
+
+  def log_me_in_as_admin(user=nil)
+    log_me_in(user)
+    @user.add_role(Role.find_or_create_by_name("admin"))
+  end
+
+  def log_me_out
+    unless @user.blank?
+      visit path_to("sign out")
+    end
+  end
 end
 
 World(AuthenticationHelpers)
