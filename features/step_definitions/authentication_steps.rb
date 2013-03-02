@@ -48,14 +48,7 @@ When /^I fill in the login form$/ do
 end
 
 Given /^I am logged in$/ do
-  @user = FactoryGirl.create(:user)
-  visit '/users/sign_in'
-  fill_in "user_email", :with => @user.email
-  fill_in "user_password", :with => @user.password
-  click_button "Sign in"
-
-  # the user has now been redirected to the home page
-  raise "Failed to log in" unless page.has_selector?(".username")
+  log_me_in
 end
 
 Then /^I should not see the element "(.*?)"$/ do |tag_name|

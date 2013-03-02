@@ -62,4 +62,24 @@ module StepHelpers
 
   end
 end
+
+module AuthenticationHelpers
+  def log_me_in(user=nil)
+    if user.present?
+      @user = user
+    elsif
+      @user = FactoryGirl.create(:user)
+    end
+
+    visit '/users/sign_in'
+    fill_in "user_email", :with => @user.email
+    fill_in "user_password", :with => @user.password
+    click_button "Sign in"
+
+    # the user has now been redirected to the home page
+    raise "Failed to log in" unless page.has_selector?(".username")
+  end
+end
+
+World(AuthenticationHelpers)
 World(StepHelpers)
