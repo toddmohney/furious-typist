@@ -36,6 +36,10 @@ group :test do
   gem 'launchy'
 end
 
+group :production do
+  gem 'pg'
+end
+
 # gem 'linecache19'
 gem 'bluecloth'
 gem 'cancan'
