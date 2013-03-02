@@ -20,15 +20,15 @@ end
 
 group :test, :development do
   gem 'factory_girl_rails'
+  gem 'pg'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-doc'
   gem "rspec-rails", "~> 2.4"
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 group :test do
-  # gem 'ruby-debug'
   gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'guard-rspec'
