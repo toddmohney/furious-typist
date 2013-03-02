@@ -31,8 +31,9 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'capybara'
-  gem 'guard-rspec'
   gem 'faker'
+  gem 'guard-rspec'
+  gem 'jasmine'
   gem 'launchy'
 end
 
