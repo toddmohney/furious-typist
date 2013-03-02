@@ -24,31 +24,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @category = nil
-    @tags = []
-
-    unless params[:article][:category] == nil || params[:article][:category].empty?
-      @category_name = params[:article][:category]
-
-      # parse the category from the params
-      @category = Category.find_or_create_by_name(@category_name.downcase)
-    end
-
-    unless params[:article][:tags] == nil || params[:article][:tags].empty?
-      # parse the tags from the params
-      # convert spaces to a comma delimited string
-      @tag_list = params[:article][:tags].split(',')
-
-      @tag_list.each do |tag|
-        unless tag.empty?
-          @tags << Tag.find_or_create_by_name(tag.downcase)
-        end
-      end
-    end
-
-    # replace the tags attribute in params
-    params[:article][:category] = @category
-    params[:article][:tags] = @tags
+    params[:article][:tags] = parse_tags(params[:article][:tags])
+    params[:article][:category] = parse_category(params[:article][:category])
 
     @article = Article.new(params[:article])
 
@@ -110,4 +87,32 @@ class ArticlesController < ApplicationController
       format.json { render :json => { :hi => "hey", :data => p }}
     end
   end
+
+  private
+
+    def parse_tags(tags_string)
+      tags = []
+
+      unless tags_string == nil || tags_string.empty?
+        tag_list = tags_string.split(',')
+
+        tag_list.each do |tag|
+          unless tag.empty?
+            tags << Tag.find_or_create_by_name(tag.downcase)
+          end
+        end
+      end
+
+      tags
+    end
+
+    def parse_category(category_string)
+      category = nil
+
+      unless category_string.blank?
+        category = Category.find_or_create_by_name(category_string.downcase)
+      end
+
+      category
+    end
 end

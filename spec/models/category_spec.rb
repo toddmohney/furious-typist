@@ -6,10 +6,6 @@ describe Category do
       expect(Category.new).to have(1).error_on(:name)
     end
 
-    it "fails validation without a description" do
-      expect(Category.new).to have(1).error_on(:description)
-    end
-
     it "passes validation with a name and description" do
       expect(Category.new({ :name => "test name",
                             :description => "test description" })).to have(0).errors

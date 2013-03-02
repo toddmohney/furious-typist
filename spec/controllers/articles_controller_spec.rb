@@ -58,7 +58,7 @@ describe ArticlesController, :type => :controller do
   end
 
   describe "POST create" do
-    describe "with valid params" do
+    context "with valid params" do
       it "creates a new Article" do
         expect {
           post :create, {:article => FactoryGirl.attributes_for(:article_post_params)}
@@ -75,9 +75,62 @@ describe ArticlesController, :type => :controller do
         post :create, {:article => FactoryGirl.attributes_for(:article_post_params)}
         response.should redirect_to(Article.last)
       end
+
+      it "creates new tags" do
+        post_params = FactoryGirl.attributes_for(:article_post_params)
+        tag_count = Tag.count
+        new_tags_count = post_params[:tags].split(',').count
+
+        post :create, {:article => post_params}
+
+        Tag.count.should eq(tag_count + new_tags_count)
+      end
+
+      it "does not duplicate existing tags" do
+        post_params = FactoryGirl.attributes_for(:article_post_params)
+
+        tag = Tag.create({ name: Faker::Lorem.word })
+        tag_count = Tag.count
+
+        # replace the :tags in the post_params
+        # with known existing tag names
+        post_params[:tags] = tag.name
+
+        post :create, {:article => post_params}
+
+        Tag.count.should eq(tag_count)
+      end
+
+      it "creates new categories" do
+        post_params = FactoryGirl.attributes_for(:article_post_params)
+
+        category = Category.new({ name: Faker::Lorem.word })
+        category_count = Category.count
+        new_category_count = post_params[:category].split(',').count
+
+        post_params[:category] = category.name
+        post :create, {:article => post_params}
+
+        Category.count.should eq(category_count + new_category_count)
+      end
+
+      it "does not duplicate existing categories" do
+        post_params = FactoryGirl.attributes_for(:article_post_params)
+
+        category = Category.create({ name: Faker::Lorem.word })
+        category_count = Category.count
+
+        # replace the :tags in the post_params
+        # with known existing tag names
+        post_params[:category] = category.name
+
+        post :create, {:article => post_params}
+
+        Category.count.should eq(category_count)
+      end
     end
 
-    describe "with invalid params" do
+    context "with invalid params" do
       it "assigns a newly created but unsaved article as @article" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
