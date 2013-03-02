@@ -100,3 +100,11 @@ end
 Then /^I should no longer see the article$/ do
   page.should have_no_content(@article.title)
 end
+
+Then /^I should be redirected to the sign in page$/ do
+  page.current_path.should eq("/users/sign_in")
+end
+
+Given /^I am logged in as a non\-admin$/ do
+  log_me_in
+end

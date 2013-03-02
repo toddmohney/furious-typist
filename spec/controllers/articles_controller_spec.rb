@@ -12,13 +12,13 @@ describe ArticlesController, :type => :controller do
       @test_article = FactoryGirl.create(:article)
       get :index, {}
     end
-    
+
     it "assigns all articles as @articles" do
       assigns(:articles).should include @test_article
     end
 
     it "renders the index template" do
-      expect(response).to render_template("index")  
+      expect(response).to render_template("index")
     end
   end
 
@@ -27,7 +27,7 @@ describe ArticlesController, :type => :controller do
       @test_article = FactoryGirl.create(:article)
       get :show, {:id => @test_article.to_param}
     end
-    
+
     it "assigns the requested article as @article" do
       assigns(:article).should eq(@test_article)
     end
@@ -97,10 +97,10 @@ describe ArticlesController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       before :each do
-        @article = FactoryGirl.create(:article) 
-        
-        @updated_attributes = { 
-          "body" => "This is the new body", 
+        @article = FactoryGirl.create(:article)
+
+        @updated_attributes = {
+          "body" => "This is the new body",
           "title" => "This is the new title",
         }
       end
@@ -130,14 +130,14 @@ describe ArticlesController, :type => :controller do
 
     describe "with invalid params" do
       before :each do
-        @article = FactoryGirl.create(:article) 
-        
-        @updated_attributes = { 
-          "body" => "This is the new body", 
+        @article = FactoryGirl.create(:article)
+
+        @updated_attributes = {
+          "body" => "This is the new body",
           "title" => "This is the new title",
         }
       end
-      
+
       it "assigns the article as @article" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)
@@ -157,7 +157,7 @@ describe ArticlesController, :type => :controller do
 
   describe "DELETE destroy" do
     before :each do
-      @article = FactoryGirl.create(:article) 
+      @article = FactoryGirl.create(:article)
     end
 
     it "destroys the requested article" do

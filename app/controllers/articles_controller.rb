@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource :only => [:new, :edit]
 
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
@@ -105,7 +105,7 @@ class ArticlesController < ApplicationController
           @tags << Tag.find_or_create_by_name(tag.downcase)
         end
       end
-      
+
       params[:article][:tags] = @tags
     end
 

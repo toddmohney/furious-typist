@@ -48,3 +48,12 @@ Feature: Articles
     When I click to delete the article
     And I click to confirm the deletion of the article
     Then I should no longer see the article
+
+  Scenario: Trying to create an aritcle without the required role
+    Given I am not logged in
+    When I go to the "article creation" page
+    Then I should see the unauthorized message
+
+    Given I am logged in as a non-admin
+    When I go to the "article creation" page
+    Then I should see the unauthorized message
