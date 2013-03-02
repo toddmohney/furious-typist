@@ -4,9 +4,9 @@ require 'rails/all'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # Bundler.require(*Rails.groups(:assets => %w(development test)))
   # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+  Bundler.require(:default, :assets, Rails.env)
 end
 
 module Furioustypist
@@ -62,7 +62,7 @@ module Furioustypist
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.template_engine :haml
-      g.test_framework :rspec, 
+      g.test_framework :rspec,
         :fixtures => true,
         :view_specs => false,
         :helper_specs => false,
