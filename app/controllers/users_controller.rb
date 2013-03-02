@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource :only => [:index, :show, :edit]
   before_filter :authenticate_user!
   # GET /users
   # GET /users.json

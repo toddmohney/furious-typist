@@ -5,10 +5,10 @@ class Role < ActiveRecord::Base
 
   # returns the admin role
   def self.admin
-    where({ name: "admin" }).first
+    find_or_create_by_name("admin")
   end
 
   def self.user
-    where({ name: "user" }).first
+    find_or_create_by_name("user")
   end
 end

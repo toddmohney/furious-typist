@@ -1,7 +1,5 @@
 Given /^I am logged out$/ do
-#  unless session_user.blank?
-#    visit path_to("sign out")
-#  end
+  log_me_out
 end
 
 When /^I go to the "(.*?)" page$/ do |page|
@@ -82,7 +80,7 @@ module AuthenticationHelpers
 
   def log_me_in_as_admin(user=nil)
     log_me_in(user)
-    @user.add_role(Role.find_or_create_by_name("admin"))
+    @user.add_role(Role.admin)
   end
 
   def log_me_out

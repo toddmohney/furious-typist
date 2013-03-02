@@ -6,5 +6,10 @@ FactoryGirl.define do
     password_confirmation "12345abcdefg"
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-  end 
+    roles {[ Role.user ]}
+  end
+
+  factory :admin, parent: :user do
+    roles {[ Role.user, Role.admin ]}
+  end
 end

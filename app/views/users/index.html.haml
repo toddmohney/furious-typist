@@ -4,11 +4,6 @@
   %tr
     %th Username
     %th Email
-    %th Is email validated
-    %th First name
-    %th Last name
-    %th Is enabled
-    %th Is deleted
     %th 
     %th 
     %th 
@@ -17,13 +12,9 @@
       %td
         %a= link_to user.username, user
       %td= user.email
-      %td= user.is_email_validated
-      %td= user.first_name
-      %td= user.last_name
-      %td= user.is_enabled
-      %td= user.is_deleted
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - if can? :edit, @user
+        %td= link_to 'Show', user
+        %td= link_to 'Edit', edit_user_path(user)
+        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
