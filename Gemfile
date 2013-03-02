@@ -46,6 +46,7 @@ gem 'database_cleaner'
 gem 'haml'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'thin'
 
 
 # To use ActiveModel has_secure_password
