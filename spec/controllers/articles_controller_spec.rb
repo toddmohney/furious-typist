@@ -155,6 +155,8 @@ describe ArticlesController, :type => :controller do
         @updated_attributes = {
           "body" => "This is the new body",
           "title" => "This is the new title",
+          "tags" => [],
+          "category" => nil
         }
       end
 

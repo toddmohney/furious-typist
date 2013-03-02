@@ -38,30 +38,8 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    # init tag list
-    @category = nil
-    @tags = []
-
-    unless params[:article][:tags] == nil || params[:article][:tags].empty?
-      # parse the tags from the params
-      @tag_list = params[:article][:tags].split(',')
-
-      @tag_list.each do |tag|
-        unless tag.blank?
-          @tags << Tag.find_or_create_by_name(tag.downcase)
-        end
-      end
-
-      params[:article][:tags] = @tags
-    end
-
-    unless params[:article][:category] == nil || params[:article][:category].empty?
-      @category_name = params[:article][:category]
-      # parse the category from the params
-      @category = Category.find_or_create_by_name(@category_name.downcase)
-      # replace the tags attribute in params
-      params[:article][:category] = @category
-    end
+    params[:article][:tags] = parse_tags(params[:article][:tags])
+    params[:article][:category] = parse_category(params[:article][:category])
 
     @article = Article.find(params[:id])
 
