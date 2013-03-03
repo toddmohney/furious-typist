@@ -2,3 +2,5 @@
 
 Furious Typist is a simple blogging framework written in Ruby on Rails
 
+{<img src="https://codeclimate.com/github/toddmohney/furious-typist.png" />}[https://codeclimate.com/github/toddmohney/furious-typist]
+
