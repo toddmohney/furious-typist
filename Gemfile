@@ -32,10 +32,13 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'capybara'
+  gem 'capybara-screenshot'
   gem 'faker'
   gem 'guard-rspec'
   gem 'jasmine'
   gem 'launchy'
+  gem 'phantomjs'
+  gem 'poltergeist'
 end
 
 group :production do
