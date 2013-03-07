@@ -71,7 +71,7 @@ class ArticlesController < ApplicationController
     def parse_tags(tags_string)
       tags = []
 
-      unless tags_string == nil || tags_string.empty?
+      unless tags_string.blank?
         tag_list = tags_string.split(',')
 
         tag_list.each do |tag|

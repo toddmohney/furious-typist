@@ -24,6 +24,7 @@ group :test, :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-doc'
+  gem 'rake'
   gem "rspec-rails", "~> 2.4"
   # gem 'sqlite3'
 end
