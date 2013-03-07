@@ -15,6 +15,7 @@ development:
 test: &test
   <<: *common
   database: furioustypist_test
+  username: postgres
 
 production:
   <<: *common
