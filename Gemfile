@@ -25,8 +25,15 @@ group :test, :development do
   gem 'pry-nav'
   gem 'pry-doc'
   gem 'rake'
-  gem "rspec-rails", "~> 2.4"
+  gem 'rspec-rails', '~> 2.4'
+  gem 'simplecov-rcov'
   # gem 'sqlite3'
+end
+
+group :development do
+  gem 'bullet'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 
 group :test do
