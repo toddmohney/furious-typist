@@ -1,0 +1,26 @@
+- if @article.errors.any?  #error_explanation
+  %h2= "#{pluralize(@article.errors.count, 'error')} prohibited this article from being saved:"
+
+  %ul
+    = @article.errors.full_messages.each do |msg|
+      %li= msg
+
+= simple_form_for(@article) do |f|
+  .field
+    = f.label :title
+    = f.text_field :title
+
+  .field
+    = f.label :body
+    = f.text_area :body
+
+  .field
+    = f.label :category
+    = f.text_field :category, :value => @category_name
+
+  .field
+    = f.label :tags
+    = f.text_field :tags, :value => @article.get_tag_names
+
+  .actions
+    = f.button :submit, class: "btn-primary"
