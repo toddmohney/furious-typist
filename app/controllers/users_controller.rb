@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource :only => [:index, :show, :edit]
+  load_and_authorize_resource
+
   before_filter :authenticate_user!
 
   def index
@@ -7,16 +8,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update_attributes(params[:user])
       redirect_to @user, :notice => 'User was successfully updated.'
     else
@@ -25,9 +22,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
 
     redirect_to users_url
+  end
+
+  private 
+
+  def not_allowed?
+    current_user.present? == false || current_user.is_admin? == false
   end
 end
