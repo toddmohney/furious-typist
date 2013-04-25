@@ -58,3 +58,12 @@ end
 When /^I click "(.*?)"$/ do |text|
   click_link text
 end
+
+Given /^I logged in as a user$/ do
+  log_me_in
+end
+
+Given /^I logged in as a admin$/ do
+  log_me_in_as_admin
+end
+

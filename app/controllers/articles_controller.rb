@@ -1,16 +1,14 @@
 class ArticlesController < ApplicationController
-  load_and_authorize_resource :only => [:new, :edit]
+  load_and_authorize_resource :only => [:show, :new, :edit]
 
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
-  caches_action [:index, :show]
-
   def index
-    @articles = Article.order("created_at DESC")
+    @articles = Article.published.order("created_at DESC")
   end
 
   def show
-    @article = Article.find(params[:id])
+    set_flash_message if current_user.present? && current_user.is_admin?
   end
 
   def new
@@ -30,7 +28,6 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
 
     if @article.save
-      expire_action :action => [:index, :show]
       redirect_to @article, :notice => 'Article was successfully created.'
     else
       render :action => "new"
@@ -44,7 +41,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update_attributes(params[:article])
-      expire_action :action => [:index, :show]
       redirect_to @article, :notice => 'Article was successfully updated.'
     else
       render :action => "edit"
@@ -68,29 +64,37 @@ class ArticlesController < ApplicationController
 
   private
 
-    def parse_tags(tags_string)
-      tags = []
+  def set_flash_message
+    if @article.published?
+      flash[:alert] = "You are viewing a published article"
+    elsif
+      flash[:alert] = "You are viewing this article in preview mode. This article has not been published"
+    end
+  end
 
-      unless tags_string.blank?
-        tag_list = tags_string.split(',')
+  def parse_tags(tags_string)
+    tags = []
 
-        tag_list.each do |tag|
-          unless tag.empty?
-            tags << Tag.find_or_create_by_name(tag.downcase)
-          end
+    unless tags_string.blank?
+      tag_list = tags_string.split(',')
+
+      tag_list.each do |tag|
+        unless tag.empty?
+          tags << Tag.find_or_create_by_name(tag.downcase)
         end
       end
-
-      tags
     end
 
-    def parse_category(category_string)
-      category = nil
+    tags
+  end
 
-      unless category_string.blank?
-        category = Category.find_or_create_by_name(category_string.downcase)
-      end
+  def parse_category(category_string)
+    category = nil
 
-      category
+    unless category_string.blank?
+      category = Category.find_or_create_by_name(category_string.downcase)
     end
+
+    category
+  end
 end

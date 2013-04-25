@@ -33,10 +33,8 @@ Then /^I should see my article$/ do
   page.should have_content("Article was successfully created.")
 end
 
-Given /^There is an existing article$/ do
-  # ensure idempotency by only creating an article IVAR
-  # if one does not already exist
-  @article ||= FactoryGirl.create(:article)
+Given /^There is an existing published article$/ do
+  @article ||= FactoryGirl.create(:published_article)
 end
 
 Then /^I should see the article edit form$/ do
@@ -107,4 +105,29 @@ end
 
 Given /^I am logged in as a non\-admin$/ do
   log_me_in
+end
+
+When /^I click on the title of the article$/ do
+  click_on @article.title
+  page.should have_no_selector(".article-container")
+end
+
+Then /^I should see the article$/ do
+  page.should have_content(@article.title)
+end
+
+When /^I try to go directly to the unpublished article page$/ do
+  visit article_path @article
+end
+
+Then /^I should be redirected to the unauthorized page$/ do
+  page.should have_content "Go skate somewhere else"
+end
+
+When /^I go to the unpublished article page$/ do
+  visit article_path @article
+end
+
+Then /^I should see an unpublished article notice$/ do
+  page.should have_content("You are viewing this article in preview mode. This article has not been published")
 end

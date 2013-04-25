@@ -9,31 +9,93 @@ describe ArticlesController, :type => :controller do
 
   describe "GET index" do
     before :each do
-      @test_article = FactoryGirl.create(:article)
+      Article.stub_chain(:published, :order)
+    end
+
+    it "displays only published articles" do
+      Article.should_receive(:published)
       get :index, {}
     end
 
-    it "assigns all articles as @articles" do
-      assigns(:articles).should include @test_article
+    it "displays the published articles in descending order by create date" do
+      Article.published.should_receive(:order).with("created_at DESC")
+      get :index, {}
     end
 
     it "renders the index template" do
+      get :index, {}
       expect(response).to render_template("index")
     end
   end
 
   describe "GET show" do
-    before :each do
-      @test_article = FactoryGirl.create(:article)
-      get :show, {:id => @test_article.to_param}
+    let(:article) { stub_model(Article, published: is_published ) }
+
+    before do
+      subject.current_user.stub(:is_admin?) { is_admin }
+
+      Article.stub(:find).with(article.id.to_s) { article }
+      get :show, { :id => article.id }
     end
 
-    it "assigns the requested article as @article" do
-      assigns(:article).should eq(@test_article)
+    context "when the article is unpublished" do
+      let(:is_published) { false }
+
+      context "when logged in as an admin" do
+        let(:is_admin) { true }
+
+        it "renders the show template" do
+          expect(response).to render_template("show")
+        end
+
+        it "renders the 'preview mode' flash message" do
+          flash[:alert].should == "You are viewing this article in preview mode. This article has not been published"
+        end
+      end
     end
 
-    it "should render the show template" do
-      expect(response).to render_template("show")
+    context "when the article is published" do
+      let(:is_published) { true }
+
+      context "when logged in as an admin" do
+        let(:is_admin) { true }
+
+        it "renders the show template" do
+          expect(response).to render_template("show")
+        end
+
+        it "renders the 'published mode' flash message" do
+          flash[:alert].should == "You are viewing a published article"
+        end
+      end
+
+      context "when logged in as a user" do
+        let(:is_admin) { false }
+
+        it "renders the show template" do
+          expect(response).to render_template("show")
+        end
+
+        it "does not render a flash message" do
+          flash[:alert].should be_nil
+        end
+      end
+
+      context "when not logged in" do
+        let(:is_admin) { false }
+
+        before do
+          subject.stub(:current_user) { nil }
+        end
+
+        it "renders the show template" do
+          expect(response).to render_template("show")
+        end
+
+        it "does not render a flash message" do
+          flash[:alert].should be_nil
+        end
+      end
     end
   end
 

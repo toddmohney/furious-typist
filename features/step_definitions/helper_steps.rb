@@ -6,6 +6,10 @@ When /^I go to the "(.*?)" page$/ do |page|
   visit path_to(page)
 end
 
+Then /^I should be redirected to the login page$/ do
+  page.should have_content "Sign in"
+  page.should have_content "You need to sign in or sign up before continuing."
+end
 
 When /^I go to my "(.*?)" page$/ do |page|
   visit path_to(page)

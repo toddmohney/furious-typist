@@ -22,5 +22,7 @@
     = f.label :tags
     = f.text_field :tags, :value => @article.get_tag_names
 
+    = f.input :published
+
   .actions
     = f.button :submit, class: "btn-primary"

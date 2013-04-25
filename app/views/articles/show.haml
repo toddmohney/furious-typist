@@ -1,20 +1,14 @@
-%p#notice= notice
-
-%p
-  %b Title: 
+.article-title
   #{@article.title}
 
-%p
-  %b Body: 
+.article-body
   #{@article.markdown}
 
-%p
-  %b Category:
+.article-category
   - unless @article.category == nil
     = @article.category.name
 
-%p
-  %b Tags:
+.article-tags
   - @article.tags.each do |t|
     = t.name + ' '
 
