@@ -4,13 +4,17 @@ class Article < ActiveRecord::Base
                   :tags,
                   :category,
                   :created_at,
-                  :updated_at
+                  :updated_at,
+                  :published
 
   validates_presence_of :body,
                         :title
 
   has_and_belongs_to_many :tags
   belongs_to :category
+
+  scope :published, where(published: true)
+  scope :unpublished, where(published: false)
 
   def markdown
     BlueCloth::new(body).to_html.html_safe
