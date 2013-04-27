@@ -68,7 +68,7 @@ Then /^I should not see a link to edit an existing article$/ do
 end
 
 Given /^I am logged in as an admin$/ do
-  log_me_in_as_admin
+  @user = log_me_in_as_admin
 end
 
 Then /^I should see a link to delete the article$/ do
@@ -104,7 +104,7 @@ Then /^I should be redirected to the sign in page$/ do
 end
 
 Given /^I am logged in as a non\-admin$/ do
-  log_me_in
+  @user = log_me_in
 end
 
 When /^I click on the title of the article$/ do

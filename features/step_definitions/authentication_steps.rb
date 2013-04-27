@@ -48,7 +48,7 @@ When /^I fill in the login form$/ do
 end
 
 Given /^I am logged in$/ do
-  log_me_in
+  @user = log_me_in
 end
 
 Then /^I should not see the element "(.*?)"$/ do |tag_name|
@@ -60,10 +60,18 @@ When /^I click "(.*?)"$/ do |text|
 end
 
 Given /^I logged in as a user$/ do
-  log_me_in
+  @user = log_me_in
 end
 
 Given /^I logged in as a admin$/ do
-  log_me_in_as_admin
+  @user = log_me_in_as_admin
+end
+
+Given /^I am an admin$/ do
+  @user = log_me_in_as_admin
+end
+
+Given /^there is a non\-admin user$/ do
+  @other_user = FactoryGirl.create(:user)
 end
 
