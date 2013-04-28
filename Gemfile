@@ -33,20 +33,21 @@ group :development do
 end
 
 group :test do
-  gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'capybara-screenshot'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'faker'
   gem 'fivemat'
+  gem 'fixture_builder'
   gem 'guard-rspec'
   gem 'jasmine'
   gem 'launchy'
   gem 'phantomjs'
   gem 'poltergeist'
   gem 'simplecov'
-  gem 'sunspot_test'
   gem 'sunspot_matchers'
+  gem 'sunspot_test'
 end
 
 group :production do

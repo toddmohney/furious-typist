@@ -1,6 +1,53 @@
-
-test:
-  body: This is an article body
-  title: This is an article title
-  category: tech
-  tags: what now super duper
+---
+article:
+  id: 1
+  title: Facere sed porro quam dicta itaque.
+  body: ! "---\n- Accusamus itaque nostrum repellendus soluta recusandae. Officiis
+    reiciendis ea omnis.\n  Distinctio quo dolor aut eligendi molestiae quisquam eum.\n-
+    Sequi et hic porro quos magnam quis. Ducimus distinctio commodi aliquid itaque.\n
+    \ Nulla est facilis natus deserunt eveniet similique.\n- Quae esse eos. Sit velit
+    recusandae autem et saepe id. Est dolorum dignissimos.\n  Placeat iusto deleniti
+    doloribus vel repellat et. Omnis voluptatem pariatur officia\n  rerum ratione.\n-
+    Ut saepe accusamus et et hic. Dolores quia qui. Et sint libero rem quibusdam qui.\n-
+    Est ut eum mollitia labore. Quae nostrum voluptate ut. Dolorum neque mollitia
+    delectus\n  expedita. Non molestiae autem tempore non et. Consequatur est saepe
+    hic.\n"
+  category_id: 1
+  created_at: 2013-04-28 13:52:32.861825000 Z
+  updated_at: 2013-04-28 13:52:32.861825000 Z
+  published: false
+unpublished_article:
+  id: 2
+  title: Eveniet autem quod non nulla aut.
+  body: ! "---\n- Et quia aliquid hic. Fugit reprehenderit et voluptatibus repellendus
+    aut qui accusantium.\n  Maiores illum nobis amet.\n- Dolorem dolore omnis veniam
+    non. Odio occaecati quam temporibus nihil enim hic non.\n  Quia distinctio porro
+    incidunt. Minima corporis et sunt itaque rerum qui.\n- Explicabo corporis quia
+    consequatur voluptatem. Vel sit quia ex ut et incidunt.\n  Eos dolor nemo eos
+    consequatur temporibus. Eum sint amet corrupti eaque in dolorum.\n- Adipisci nisi
+    natus provident a aut enim quia. Unde dolores eos totam ut rerum illo\n  et. Sequi
+    velit inventore odio hic nostrum architecto rerum. Sapiente sunt nihil\n  est.
+    Incidunt maiores assumenda neque totam consequatur dolorem numquam.\n- Dolore
+    et facilis. Sit sequi mollitia quisquam et et. Rerum voluptas dolore. Accusantium\n
+    \ aut quia voluptate. Quas fugit quia.\n"
+  category_id: 2
+  created_at: 2013-04-28 13:52:32.918394000 Z
+  updated_at: 2013-04-28 13:52:32.918394000 Z
+  published: false
+published_article:
+  id: 3
+  title: Id officiis non eveniet at quas quia.
+  body: ! "---\n- Repudiandae quasi hic magnam adipisci consequatur fuga. Voluptatibus
+    cumque fuga\n  dicta qui molestias. Quia suscipit ut corporis recusandae. Voluptate
+    nihil facere.\n  Possimus tenetur repellat sunt delectus dignissimos illo.\n-
+    Earum sit occaecati molestiae. Sint voluptas et. In aut vel alias eveniet. Est
+    error\n  aliquid. Ut alias quae harum qui ducimus.\n- Laborum nulla rem consequatur
+    quo sint unde quas. Quod et omnis. Dolorem blanditiis\n  non culpa. Iste sed itaque
+    et impedit. Et magni nostrum.\n- Nihil nemo est et. Ducimus provident voluptatem
+    facilis architecto in et nostrum.\n  Nobis aliquam fuga laborum. In quis enim
+    fuga.\n- Dolorem sint quidem quo numquam. Ducimus ut porro laudantium sint recusandae
+    placeat.\n  Et ut ut. Sunt nostrum et quis consequatur iure.\n"
+  category_id: 3
+  created_at: 2013-04-28 13:52:32.935314000 Z
+  updated_at: 2013-04-28 13:52:32.935314000 Z
+  published: true

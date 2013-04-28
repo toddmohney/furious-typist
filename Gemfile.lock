@@ -81,6 +81,9 @@ GEM
       eventmachine (>= 0.12.0)
     ffi (1.4.0)
     fivemat (1.2.1)
+    fixture_builder (0.3.5)
+      activerecord (>= 2)
+      activesupport (>= 2)
     gherkin (2.11.6)
       json (>= 1.7.6)
     guard (1.6.2)
@@ -270,6 +273,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   fivemat
+  fixture_builder
   guard
   guard-rspec
   haml

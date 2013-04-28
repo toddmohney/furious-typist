@@ -1,0 +1,28 @@
+---
+articles_tags_001:
+  article_id: '1'
+  tag_id: '1'
+articles_tags_002:
+  article_id: '1'
+  tag_id: '2'
+articles_tags_003:
+  article_id: '1'
+  tag_id: '3'
+articles_tags_004:
+  article_id: '2'
+  tag_id: '4'
+articles_tags_005:
+  article_id: '2'
+  tag_id: '5'
+articles_tags_006:
+  article_id: '2'
+  tag_id: '6'
+articles_tags_007:
+  article_id: '3'
+  tag_id: '7'
+articles_tags_008:
+  article_id: '3'
+  tag_id: '8'
+articles_tags_009:
+  article_id: '3'
+  tag_id: '9'

@@ -1,4 +1,46 @@
-
-
-neat_post:
-  name: 'neat_post'
+---
+laudantium:
+  id: 1
+  name: laudantium
+  created_at: 2013-04-28 13:52:32.850053000 Z
+  updated_at: 2013-04-28 13:52:32.850053000 Z
+magnam:
+  id: 2
+  name: magnam
+  created_at: 2013-04-28 13:52:32.855291000 Z
+  updated_at: 2013-04-28 13:52:32.855291000 Z
+aspernatur:
+  id: 3
+  name: aspernatur
+  created_at: 2013-04-28 13:52:32.857638000 Z
+  updated_at: 2013-04-28 13:52:32.857638000 Z
+sequi:
+  id: 4
+  name: sequi
+  created_at: 2013-04-28 13:52:32.912974000 Z
+  updated_at: 2013-04-28 13:52:32.912974000 Z
+aut:
+  id: 5
+  name: aut
+  created_at: 2013-04-28 13:52:32.914812000 Z
+  updated_at: 2013-04-28 13:52:32.914812000 Z
+reiciendis:
+  id: 6
+  name: reiciendis
+  created_at: 2013-04-28 13:52:32.916564000 Z
+  updated_at: 2013-04-28 13:52:32.916564000 Z
+reiciendis_1:
+  id: 7
+  name: reiciendis
+  created_at: 2013-04-28 13:52:32.929225000 Z
+  updated_at: 2013-04-28 13:52:32.929225000 Z
+dolorem:
+  id: 8
+  name: dolorem
+  created_at: 2013-04-28 13:52:32.931391000 Z
+  updated_at: 2013-04-28 13:52:32.931391000 Z
+quisquam:
+  id: 9
+  name: quisquam
+  created_at: 2013-04-28 13:52:32.933380000 Z
+  updated_at: 2013-04-28 13:52:32.933380000 Z

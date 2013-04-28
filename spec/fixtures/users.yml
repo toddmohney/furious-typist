@@ -1,9 +1,61 @@
-
-todd:
-  username: toddmohney
-  email: toddmohney@gmail
-  first_name: todd
-  last_name: mohney
-  is_enabled: true
-  is_deleted: false
-  is_email_validated: true
+---
+user:
+  id: 1
+  username: Addie
+  email: britney@nienow.biz
+  is_email_validated: 
+  first_name: Helmer
+  last_name: Romaguera
+  is_enabled: 
+  is_deleted: 
+  created_at: 2013-04-28 13:52:32.726623000 Z
+  updated_at: 2013-04-28 13:52:32.726623000 Z
+  encrypted_password: $2a$04$NSIpQtazgE4Y/il86vPGvuXO/ncfw1o1uJx7xkvNU1caEZ.g5QrJe
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: 
+  last_sign_in_ip: 
+non_admin:
+  id: 2
+  username: Jett
+  email: omer.weinat@reilly.net
+  is_email_validated: 
+  first_name: Rafael
+  last_name: Walsh
+  is_enabled: 
+  is_deleted: 
+  created_at: 2013-04-28 13:52:32.761203000 Z
+  updated_at: 2013-04-28 13:52:32.761203000 Z
+  encrypted_password: $2a$04$ReKP2fS8J2sQA55DNvHtv.RTKc.tthI41/2D8EZnAzIWuARNpCRZy
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: 
+  last_sign_in_ip: 
+admin:
+  id: 3
+  username: Devonte
+  email: kennedi_roob@renner.com
+  is_email_validated: 
+  first_name: Lizeth
+  last_name: Boyer
+  is_enabled: 
+  is_deleted: 
+  created_at: 2013-04-28 13:52:32.773202000 Z
+  updated_at: 2013-04-28 13:52:32.773202000 Z
+  encrypted_password: $2a$04$zoo52u4Y7GSzt./4CvtMZ.TRsDw5tjwNGT3KsIAeknv0HG.RbEiRy
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: 
+  last_sign_in_ip: 
