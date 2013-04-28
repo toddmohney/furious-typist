@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
                   :is_email_validated,
                   :is_enabled,
                   :last_name,
-                  :username
+                  :username,
+                  :is_admin
 
   has_and_belongs_to_many :roles
 
@@ -32,7 +33,6 @@ class User < ActiveRecord::Base
 
   after_initialize do |user|
     unless user.roles.present?
-      # add a default role of "user" to a new user
       user.roles << Role.where({ name: "user" })
     end
   end
@@ -47,10 +47,22 @@ class User < ActiveRecord::Base
     end
   end
 
+  def remove_role(role_name)
+    roles_to_delete = roles.where({ name: role_name })
+    roles.delete(roles_to_delete)
+  end
+
   def is_admin?
     roles.include?(Role.admin)
   end
 
+  def is_admin=(is_admin)
+    if is_admin
+      add_role(Role.admin)
+    else
+      remove_role("admin")
+    end
+  end
 
   private
 

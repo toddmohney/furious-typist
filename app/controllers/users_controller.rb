@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    params[:user] = normalize_params(params[:user])
+
     if @user.update_attributes(params[:user])
       redirect_to @user, :notice => 'User was successfully updated.'
     else
@@ -31,5 +33,17 @@ class UsersController < ApplicationController
 
   def not_allowed?
     current_user.present? == false || current_user.is_admin? == false
+  end
+
+  def normalize_params(user_params)
+    if has_admin_params?(user_params)
+      user_params[:is_admin] = user_params[:is_admin] == "1"
+    end
+
+    user_params
+  end
+
+  def has_admin_params?(user_params)
+    user_params.present? && user_params[:is_admin].present?
   end
 end

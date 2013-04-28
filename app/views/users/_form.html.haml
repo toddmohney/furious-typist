@@ -1,4 +1,4 @@
-= form_for(@user) do |f|
+= simple_form_for(@user) do |user_form|
   - if @user.errors.any?
     #error_explanation
       %h2= pluralize(@user.errors.count, "error") 
@@ -7,33 +7,13 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :username
-    %br
-    = f.text_field :username, :readonly => true
-  .field
-    = f.label :email
-    %br
-    = f.text_field :email, :readonly => true
-  .field
-    = f.label :is_email_validated
-    %br
-    = f.check_box :is_email_validated, :disabled => true
-  .field
-    = f.label :first_name 
-    %br
-    = f.text_field :first_name 
-  .field
-    = f.label :last_name
-    %br
-    = f.text_field :last_name 
-  .field
-    = f.label :is_enabled
-    %br
-    = f.check_box :is_enabled
-  .field
-    = f.label :is_deleted
-    %br
-    = f.check_box :is_deleted
+  = user_form.input :username, :readonly => true
+  = user_form.input :email, :readonly => true
+  = user_form.input :is_email_validated, :disabled => true
+  = user_form.input :is_admin?, as: :boolean, label: "Set as admin"
+  = user_form.input :first_name 
+  = user_form.input :last_name 
+  = user_form.input :is_enabled
+  = user_form.input :is_deleted
   .actions
-    = f.submit
+    = user_form.button :submit, { class: "btn-primary" }

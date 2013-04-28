@@ -26,123 +26,123 @@ describe User do
 
     it "passes validation with a valid username and email address" do
       user = User.new({ :username => "toddmohney",
-                         :email => "toddmohney@gmail.com" })
+                        :email => "toddmohney@gmail.com" })
       user.should have(0).errors
     end
 
     it "passes validation without a first name and without a last name" do
       user = User.new({ :username => "toddmohney",
-                         :email => "toddmohney@gmail.com" })
+                        :email => "toddmohney@gmail.com" })
       user.should have(0).error
     end
 
     it "fails validation with a first name, but no last name" do
       user = User.new({ :username => "toddmohney",
-                         :email => "toddmohney@gmail.com",
-                         :first_name => "todd" })
+                        :email => "toddmohney@gmail.com",
+                        :first_name => "todd" })
       user.should have(1).error_on(:last_name)
     end
 
     it "fails validation with a last name, but no first name" do
       user = User.new({ :username => "toddmohney",
-                         :email => "toddmohney@gmail.com",
-                         :last_name => "mohney"})
+                        :email => "toddmohney@gmail.com",
+                        :last_name => "mohney"})
       user.should have(1).error_on(:first_name)
     end
 
     it "fails validation with invalid characters in the first name" do
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "t.o.d.d",
-                         :last_name => "mohney"
-                       })
+                        :email => "test.test.com",
+                        :first_name => "t.o.d.d",
+                        :last_name => "mohney"
+      })
 
       user.should have(1).error_on(:first_name)
 
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "12345",
-                         :last_name => "mohney"
-                       })
+                        :email => "test.test.com",
+                        :first_name => "12345",
+                        :last_name => "mohney"
+      })
 
       user.should have(1).error_on(:first_name)
 
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "t.5",
-                         :last_name => "mohney"
-                       })
+                        :email => "test.test.com",
+                        :first_name => "t.5",
+                        :last_name => "mohney"
+      })
 
       user.should have(1).error_on(:first_name)
     end
 
     it "fails validation with invalid characters in the last name" do
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "todd",
-                         :last_name => "moh&ney"
-                       })
+                        :email => "test.test.com",
+                        :first_name => "todd",
+                        :last_name => "moh&ney"
+      })
 
       user.should have(1).error_on(:last_name)
 
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "todd",
-                         :last_name => "moh5ey"
-                       })
+                        :email => "test.test.com",
+                        :first_name => "todd",
+                        :last_name => "moh5ey"
+      })
 
       user.should have(1).error_on(:last_name)
 
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "todd",
-                         :last_name => "234."
-                       })
+                        :email => "test.test.com",
+                        :first_name => "todd",
+                        :last_name => "234."
+      })
 
       user.should have(1).error_on(:last_name)
     end
 
     it "fails validation if the first name is < 2 or > 64 chars" do
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "t",
-                         :last_name => "mohney."
-                       })
+                        :email => "test.test.com",
+                        :first_name => "t",
+                        :last_name => "mohney."
+      })
 
       user.should have(1).error_on(:first_name)
 
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                         :last_name => "mohney."
-                       })
+                        :email => "test.test.com",
+                        :first_name => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                        :last_name => "mohney."
+      })
 
       user.should have(1).error_on(:first_name)
     end
 
     it "fails validation if the last name is < 2 or > 64 chars" do
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "todd",
-                         :last_name => "m."
-                       })
+                        :email => "test.test.com",
+                        :first_name => "todd",
+                        :last_name => "m."
+      })
 
       user.should have(1).error_on(:last_name)
 
       user = User.new({ :username => "some_new_user",
-                         :email => "test.test.com",
-                         :first_name => "todd",
-                         :last_name => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx."
-                       })
+                        :email => "test.test.com",
+                        :first_name => "todd",
+                        :last_name => "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx."
+      })
 
       user.should have(1).error_on(:last_name)
     end
 
     it "passes validation with a first and last name" do
       user = User.new({ :username => "toddmohney",
-                         :email => "toddmohney@gmail.com",
-                         :first_name => "todd",
-                         :last_name => "mohney"})
+                        :email => "toddmohney@gmail.com",
+                        :first_name => "todd",
+                        :last_name => "mohney"})
       user.should have(0).errors
     end
   end
@@ -198,6 +198,17 @@ describe User do
     end
   end
 
+  describe "#remove_role" do
+    let(:user) { users(:admin) }
+
+    it "removes the given role from the user" do
+      user.roles.count.should == 2
+
+      user.remove_role("admin")
+      user.roles.count.should == 1
+    end
+  end
+
   describe "#is_admin?" do
     context "user is not an admin" do
       it "should return false" do
@@ -213,6 +224,44 @@ describe User do
         user.add_role(Role.admin)
 
         user.is_admin?.should be_true
+      end
+    end
+  end
+
+  describe "#is_admin" do
+    context "when setting the admin role" do
+      context "when the user is not an admin" do
+        let(:user) { users(:user) }
+
+        it "adds the admin role" do
+          expect {
+            user.is_admin = true
+          }.to change{ user.roles.count }.by(1)
+
+          user.roles.should include(Role.find_by_name("admin"))
+        end
+      end
+
+      context "when the user is already an admin" do
+        let(:user) { users(:admin) }
+
+        it "does not duplicate and existing admin role" do
+          expect {
+            user.is_admin = true
+          }.to change{ user.roles.count }.by(0)
+        end
+      end
+    end
+
+    context "when removing the admin role" do
+      let(:user) { users(:admin) }
+
+      it "removes the admin role" do
+        expect {
+          user.is_admin = false
+        }.to change{ user.roles.count }.by(-1)
+
+        user.roles.should_not include(Role.find_by_name("admin"))
       end
     end
   end

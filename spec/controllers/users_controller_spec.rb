@@ -58,10 +58,6 @@ describe UsersController do
     describe "with valid params" do
       it "updates the requested user" do
         user = FactoryGirl.create(:user)
-        # Assuming there are no other users in the database, this
-        # specifies that the User created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         User.any_instance.should_receive(:update_attributes).with({ "username" => "MyString" })
         put :update, {:id => user.to_param, :user => { "username" => "MyString" }}
       end

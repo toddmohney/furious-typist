@@ -166,8 +166,9 @@ describe ArticlesController, :type => :controller do
       it "creates new categories" do
         post_params = FactoryGirl.attributes_for(:article_post_params)
 
-        category = Category.new({ name: Faker::Lorem.word })
         category_count = Category.count
+
+        category = Category.new({ name: Faker::Lorem.word })
         new_category_count = post_params[:category].split(',').count
 
         post_params[:category] = category.name
