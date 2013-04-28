@@ -63,6 +63,10 @@ Given /^I logged in as a user$/ do
   @user = log_me_in
 end
 
+Given /^I am a non\-admin user$/ do
+  @user = log_me_in
+end
+
 Given /^I logged in as a admin$/ do
   @user = log_me_in_as_admin
 end
@@ -73,5 +77,9 @@ end
 
 Given /^there is a non\-admin user$/ do
   @other_user = FactoryGirl.create(:user)
+end
+
+Given /^there is another admin user$/ do
+  @other_user = FactoryGirl.create(:admin)
 end
 

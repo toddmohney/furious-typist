@@ -1,9 +1,9 @@
 Feature: Users
-  Scenario: Viewing a list of registered users
-    Given I am logged in as an admin
+  # Scenario: Viewing a list of registered users
+    # Given I am logged in as an admin
 
-    When I go to the "users" page
-    Then I should see a list of registered users
+    # When I go to the "users" page
+    # Then I should see a list of registered users
 
   Scenario: Viewing a list of registered users without the proper role
     Given I am logged out

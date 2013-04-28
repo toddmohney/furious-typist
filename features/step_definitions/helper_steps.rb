@@ -2,6 +2,10 @@ Given /^I am logged out$/ do
   log_me_out
 end
 
+When /^I am on the "(.*?)" page$/ do |page|
+  visit path_to(page)
+end
+
 When /^I go to the "(.*?)" page$/ do |page|
   visit path_to(page)
 end
@@ -17,6 +21,14 @@ end
 
 When /^I click on the "(.*?)" button$/ do |click_tgt|
   click_button(click_tgt)
+end
+
+When /^I check "(.*?)"$/ do |check_box_label|
+  check check_box_label
+end
+
+When /^I uncheck "(.*?)"$/ do |check_box_label|
+  uncheck check_box_label
 end
 
 Then /^I should be on the "([^"]*)"( [\w]*)? page$/ do |page_name, format|
