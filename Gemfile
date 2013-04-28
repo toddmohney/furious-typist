@@ -16,6 +16,7 @@ end
 
 group :test, :development do
   gem 'factory_girl_rails'
+  gem 'fixture_builder'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-doc'
@@ -39,7 +40,6 @@ group :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'fivemat'
-  gem 'fixture_builder'
   gem 'guard-rspec'
   gem 'jasmine'
   gem 'launchy'
