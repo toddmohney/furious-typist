@@ -23,12 +23,20 @@ class Article < ActiveRecord::Base
   def get_tag_names
     @tag_names = []
 
-    unless tags.blank?
-      tags.each do |t|
-        @tag_names << t.name
-      end
-    end
+    tags.each { |t| @tag_names << t.name } unless tags.blank?
 
     @tag_names.join(", ")
+  end
+
+  def searchable?
+    published
+  end
+
+  searchable if: :searchable? do
+    text :title, boost: 1000
+    text :body, boost: 500
+
+    integer :category_id
+    integer :tag_ids, multiple: true
   end
 end

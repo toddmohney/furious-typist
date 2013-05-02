@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'pg'
-gem 'sunspot_rails'
 
 
 # Gems used only for assets and not required
@@ -23,6 +21,7 @@ group :test, :development do
   gem 'rake'
   gem 'rspec-rails', '~> 2.4'
   gem 'simplecov-rcov'
+  gem 'sunspot_rails'
   gem 'sunspot_solr'
   gem 'zeus'
 end
@@ -60,7 +59,9 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'json'
 gem 'less-rails-bootstrap'
+gem 'pg'
 gem 'simple_form'
+gem 'sunspot_rails'
 gem 'thin'
 
 

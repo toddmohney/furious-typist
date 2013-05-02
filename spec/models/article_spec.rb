@@ -25,6 +25,29 @@ describe Article do
     end
   end
 
+  describe "#searchable?" do
+    subject { article.searchable? }
+
+    let(:article) { stub_model(Article, published: is_published) }
+
+    context "the article is published" do
+      let(:is_published) { true }
+      it { should be_true }
+    end
+
+    context "the article is not published" do
+      let(:is_published) { false }
+      it { should be_false}
+    end
+  end
+
+  describe "searchable", search: true do
+    subject { Article }
+
+    it { should have_searchable_field(:title) }
+    it { should have_searchable_field(:body) }
+  end
+
   describe "#markdown" do
     it "returns the html representation of body content written in Markdown" do
       article = Article.new({
@@ -39,7 +62,7 @@ describe Article do
   describe "#get_tag_names" do
     context "when an article has no tags" do
       let(:article) { Article.new({ body: "hey hey", title: "hi hi" }) }
-      
+
       it "returns an empty string" do
         article.get_tag_names.should eq("")
       end
@@ -47,9 +70,9 @@ describe Article do
 
     context "when an article has tags" do
       let(:article) { Article.new({ body: "hey hey", title: "hi hi", tags: tags }) }
-      let(:tags) {[ 
+      let(:tags) {[
         Tag.new({ name: "tag_one" }),
-        Tag.new({ name: "tag_two" })  
+        Tag.new({ name: "tag_two" })
       ]}
 
       it "returns a comma separated list of tags" do

@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'database_cleaner'
+require 'sunspot_test/rspec'
 require 'support/fixture_builder'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -12,12 +13,11 @@ require 'support/fixture_builder'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, :type => :controller
+  config.include FactoryGirl::Syntax::Methods
 
   config.extend ControllerMacros, :type => :controller
 
-  # require 'support/fixture_builder'
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.global_fixtures = :all
@@ -25,7 +25,17 @@ RSpec.configure do |config|
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
-  config.infer_base_class_for_anonymous_controllers = false
+  config.infer_base_class_for_anonymous_controllers = true
+
+  config.include SunspotMatchers
+
+  config.before(:all, search: false) do
+    Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
+  end
+
+  config.after(:all, search: false) do
+    Sunspot.session = Sunspot.session.original_session
+  end
 
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
