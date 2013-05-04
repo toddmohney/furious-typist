@@ -1,3 +1,5 @@
+require 'sunspot_test/cucumber'
+
 def use_selenium
   Capybara.current_driver = :selenium
 end

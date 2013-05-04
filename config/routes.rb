@@ -3,14 +3,8 @@ Furioustypist::Application.routes.draw do
 
   resources :categories
   resources :tags
-  resources :users, :only => [:index,
-                              :show,
-                              :edit,
-                              :update,
-                              :destroy]
-
-  match "articles/ajaxcall" => "articles#ajaxcall", :via => [:get]
-
+  resources :users, only:  [:index, :show, :edit, :update, :destroy]
+  resources :searches, only: [:index]
   resources :articles
 
   # You can have the root of your site routed with "root"

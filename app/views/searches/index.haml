@@ -1,0 +1,14 @@
+
+.search-container
+  %input.search-box#search_box{ placeholder: "Search for articles" }
+  %button.search-button.btn-primary Search
+
+%br
+
+%h2 Search Results
+
+.search-results
+  - @articles.each do |article|
+    .article-search-result
+      .article-search-result-title
+        = link_to article.title, article_path(article)
