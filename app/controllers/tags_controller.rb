@@ -21,7 +21,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(params[:tag])
 
     if @tag.save
-      redirect_to @tag, :notice => 'Tag was successfully created.'
+      redirect_with_notice
     else
       render :action => "new"
     end
@@ -31,7 +31,7 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
 
     if @tag.update_attributes(params[:tag])
-      redirect_to @tag, :notice => 'Tag was successfully updated.'
+      redirect_with_notice
     else
       render :action => "edit"
     end
@@ -42,5 +42,11 @@ class TagsController < ApplicationController
     @tag.destroy
 
     redirect_to tags_url
+  end
+
+  private
+
+  def redirect_with_notice
+    redirect_to @tag, :notice => 'Tag was successfully created.'
   end
 end

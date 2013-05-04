@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(params[:category])
 
     if @category.save
-      redirect_to @category, :notice => 'Category was successfully created.'
+      redirect_with_notice
     else
       render :action => "new"
     end
@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     if @category.update_attributes(params[:category])
-      redirect_to @category, :notice => 'Category was successfully updated.'
+      redirect_with_notice
     else
       render :action => "edit"
     end
@@ -45,5 +45,11 @@ class CategoriesController < ApplicationController
     @category.destroy
 
     redirect_to categories_url
+  end
+
+  private
+
+  def redirect_with_notice
+    redirect_to @category, :notice => 'Category was successfully created.'
   end
 end
