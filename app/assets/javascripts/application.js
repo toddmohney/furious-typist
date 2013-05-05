@@ -19,3 +19,25 @@
 //= require twitter/bootstrap
 //= require underscore
 //= require_tree .
+
+$(function() {
+  Elemental.load($(document));
+});
+
+
+searchInitializer = function(element) {
+  $("#search_button").on("click", searchArticles);
+}
+
+searchArticles = function(element) {
+  var keywords = $("#search_box").val();
+  var dataObj = { keywords: keywords }
+
+  window.location.href = "/searches/?keywords=" + dataObj.keywords
+
+  // $.ajax({
+    // url: "/searches",
+    // data: dataObj,
+    // method: "GET"
+  // });
+}

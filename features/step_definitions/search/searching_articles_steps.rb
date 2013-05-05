@@ -13,7 +13,7 @@ When /^I search for "(.*?)"$/ do |search_term|
 
   fill_in "search_box", with: search_term
 
-  click_on "Search"
+  click_button "Search"
 end
 
 Then /^I should see the article titled "(.*?)" in the search results$/ do |title|
@@ -23,7 +23,7 @@ Then /^I should see the article titled "(.*?)" in the search results$/ do |title
 end
 
 Given /^there is an article with the word "(.*?)" in its body$/ do |search_term|
-  body = Faker::Lorem.paragraphs(1) + " #{search_term}"
+  body = Faker::Lorem.paragraphs(1)[0] + " #{search_term}"
   @article = FactoryGirl.create(:published_article, body: body)
 end
 
