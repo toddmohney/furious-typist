@@ -55,6 +55,7 @@ end
 gem 'bluecloth'
 gem 'cancan'
 gem 'devise'
+gem 'elementaljs-rails'
 gem 'haml'
 gem 'jquery-rails'
 gem 'json'
