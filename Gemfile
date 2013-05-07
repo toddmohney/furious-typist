@@ -14,6 +14,7 @@ end
 
 group :test, :development do
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'fixture_builder'
   gem 'pry'
   gem 'pry-nav'
@@ -37,7 +38,6 @@ group :test do
   gem 'capybara-screenshot'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
-  gem 'faker'
   gem 'fivemat'
   gem 'guard-rspec'
   gem 'jasmine'
