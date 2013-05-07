@@ -49,6 +49,11 @@ $article_title_color_light: #3c3c3c;
   }
 }
 
+.create-new-article {
+  width: 100%;
+  text-align: right;
+}
+
 .article-create-date {
   color: $article_title_color_light;
   font-size: smaller;
@@ -59,6 +64,10 @@ $article_title_color_light: #3c3c3c;
     top: 12px;
     bottom: 8px
   };
+}
+
+.article-author {
+  font-size: small;
 }
 
 .article-tags {

@@ -1,9 +1,9 @@
 
--if can? :create, @article
-  = link_to('New Article',
-            new_article_path,
-            :class => "new-article")
-
+- if can? :manage, Article.new
+  .create-new-article
+    = link_to('Create New Article',
+              new_article_path,
+              :class => "new-article")
 
 %br
 %br
@@ -34,13 +34,18 @@
           tags:
           - article.tags.each do |t|
             %span= t.name + ' '
+
+    .article-author
+      %em
+        %strong
+          author:
+          %span= article.author.username
     - if can? :edit, @article
       .admin-article
         = link_to 'Edit', edit_article_path(article)
         = link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   .article-spacer
-
 
 %br
 %br

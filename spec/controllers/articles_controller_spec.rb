@@ -3,10 +3,6 @@ require 'spec_helper'
 describe ArticlesController, :type => :controller do
   login_admin
 
-  # This should return the minimal set of attributes required to create a valid
-  # Article. As you add validations to Article, be sure to
-  # update the return value of this method accordingly.
-
   describe "GET index" do
     before :each do
       Article.stub_chain(:published, :order)
