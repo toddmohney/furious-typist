@@ -1,4 +1,4 @@
 #!/bin/bash
 bundle
 
-rake db:migrate db:seed db:test:prepare
+rake db:migrate db:seed db:test:prepare sunspot:reset
