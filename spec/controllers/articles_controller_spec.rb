@@ -133,6 +133,11 @@ describe ArticlesController, :type => :controller do
         assigns(:article).should be_persisted
       end
 
+      it "assigns the current user as the author" do
+        post :create, {:article => FactoryGirl.attributes_for(:article_post_params)}
+        assigns(:article).author.should == subject.current_user
+      end
+
       it "redirects to the created article" do
         post :create, {:article => FactoryGirl.attributes_for(:article_post_params)}
         response.should redirect_to(Article.last)

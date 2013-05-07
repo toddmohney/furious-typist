@@ -1,16 +1,16 @@
 ---
 user:
-  id: 1
-  username: Addie
-  email: britney@nienow.biz
+  id: 121
+  username: Eino
+  email: polly@carter.com
   is_email_validated: 
-  first_name: Helmer
-  last_name: Romaguera
+  first_name: Bernhard
+  last_name: Runolfsdottir
   is_enabled: 
   is_deleted: 
-  created_at: 2013-04-28 13:52:32.726623000 Z
-  updated_at: 2013-04-28 13:52:32.726623000 Z
-  encrypted_password: $2a$04$NSIpQtazgE4Y/il86vPGvuXO/ncfw1o1uJx7xkvNU1caEZ.g5QrJe
+  created_at: 2013-05-07 00:59:14.978668000 Z
+  updated_at: 2013-05-07 00:59:14.978668000 Z
+  encrypted_password: $2a$10$1kgSZ0dvsWNrLOly0gu4wOOoeuVfOK/zHeIVZ0VJ6jtcu.QCQQN.K
   reset_password_token: 
   reset_password_sent_at: 
   remember_created_at: 
@@ -20,17 +20,17 @@ user:
   current_sign_in_ip: 
   last_sign_in_ip: 
 non_admin:
-  id: 2
-  username: Jett
-  email: omer.weinat@reilly.net
+  id: 122
+  username: Cruz
+  email: consuelo@ledner.info
   is_email_validated: 
-  first_name: Rafael
-  last_name: Walsh
+  first_name: Charles
+  last_name: Gutmann
   is_enabled: 
   is_deleted: 
-  created_at: 2013-04-28 13:52:32.761203000 Z
-  updated_at: 2013-04-28 13:52:32.761203000 Z
-  encrypted_password: $2a$04$ReKP2fS8J2sQA55DNvHtv.RTKc.tthI41/2D8EZnAzIWuARNpCRZy
+  created_at: 2013-05-07 00:59:15.074419000 Z
+  updated_at: 2013-05-07 00:59:15.074419000 Z
+  encrypted_password: $2a$10$1J8hNtkY5QXt56kc/pluneWksKHooU59cK0esSedYTjOdGnA0UcpS
   reset_password_token: 
   reset_password_sent_at: 
   remember_created_at: 
@@ -40,17 +40,57 @@ non_admin:
   current_sign_in_ip: 
   last_sign_in_ip: 
 admin:
-  id: 3
-  username: Devonte
-  email: kennedi_roob@renner.com
+  id: 123
+  username: Chasity
+  email: einar.beer@schadenheathcote.name
   is_email_validated: 
-  first_name: Lizeth
-  last_name: Boyer
+  first_name: Darrell
+  last_name: Collier
   is_enabled: 
   is_deleted: 
-  created_at: 2013-04-28 13:52:32.773202000 Z
-  updated_at: 2013-04-28 13:52:32.773202000 Z
-  encrypted_password: $2a$04$zoo52u4Y7GSzt./4CvtMZ.TRsDw5tjwNGT3KsIAeknv0HG.RbEiRy
+  created_at: 2013-05-07 00:59:15.170400000 Z
+  updated_at: 2013-05-07 00:59:15.170400000 Z
+  encrypted_password: $2a$10$8j8zyZmC.63i22DrtA028OaUhfMSJxCOuNmzWGozmvg5QUdIaUSfS
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: 
+  last_sign_in_ip: 
+maxie:
+  id: 124
+  username: Maxie
+  email: tyree@funk.name
+  is_email_validated: 
+  first_name: Ulises
+  last_name: Abbott
+  is_enabled: 
+  is_deleted: 
+  created_at: 2013-05-07 00:59:15.423861000 Z
+  updated_at: 2013-05-07 00:59:15.423861000 Z
+  encrypted_password: $2a$10$XFCSRIpgsDh.tuK5qXTdYu/ZqWe799aysjAsLi6t9SVlZoav.JDp6
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: 0
+  current_sign_in_at: 
+  last_sign_in_at: 
+  current_sign_in_ip: 
+  last_sign_in_ip: 
+gayle:
+  id: 125
+  username: Gayle
+  email: dameon@hamillreichert.net
+  is_email_validated: 
+  first_name: Camille
+  last_name: Schowalter
+  is_enabled: 
+  is_deleted: 
+  created_at: 2013-05-07 00:59:15.537448000 Z
+  updated_at: 2013-05-07 00:59:15.537448000 Z
+  encrypted_password: $2a$10$JPwQkLjHgCxSyUlvxtcxE.iRbYQgYzhWUiZsh0DRRqJX7zN/o.hd2
   reset_password_token: 
   reset_password_sent_at: 
   remember_created_at: 

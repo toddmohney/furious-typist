@@ -10,8 +10,9 @@ class Article < ActiveRecord::Base
   validates_presence_of :body,
                         :title
 
-  has_and_belongs_to_many :tags
+  belongs_to :author, class_name: "User"
   belongs_to :category
+  has_and_belongs_to_many :tags
 
   scope :published, where(published: true)
   scope :unpublished, where(published: false)

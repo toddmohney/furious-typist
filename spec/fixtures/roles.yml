@@ -1,26 +1,26 @@
 ---
 user:
-  id: 1
+  id: 8
   name: user
-  created_at: 2013-04-28 13:52:31.752436000 Z
-  updated_at: 2013-04-28 13:52:31.752436000 Z
+  created_at: 2013-05-07 00:59:14.934870000 Z
+  updated_at: 2013-05-07 00:59:14.934870000 Z
 admin:
-  id: 2
+  id: 9
   name: admin
-  created_at: 2013-04-28 13:52:32.769827000 Z
-  updated_at: 2013-04-28 13:52:32.769827000 Z
+  created_at: 2013-05-07 00:59:15.166811000 Z
+  updated_at: 2013-05-07 00:59:15.166811000 Z
 role:
-  id: 3
+  id: 10
   name: some_role
-  created_at: 2013-04-28 13:52:32.941236000 Z
-  updated_at: 2013-04-28 13:52:32.941236000 Z
+  created_at: 2013-05-07 00:59:15.559977000 Z
+  updated_at: 2013-05-07 00:59:15.559977000 Z
 admin_role:
-  id: 4
+  id: 11
   name: admin
-  created_at: 2013-04-28 13:52:32.943915000 Z
-  updated_at: 2013-04-28 13:52:32.943915000 Z
+  created_at: 2013-05-07 00:59:15.563759000 Z
+  updated_at: 2013-05-07 00:59:15.563759000 Z
 user_role:
-  id: 5
+  id: 12
   name: user
-  created_at: 2013-04-28 13:52:32.946496000 Z
-  updated_at: 2013-04-28 13:52:32.946496000 Z
+  created_at: 2013-05-07 00:59:15.567099000 Z
+  updated_at: 2013-05-07 00:59:15.567099000 Z

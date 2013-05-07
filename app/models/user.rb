@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
                   :is_admin
 
   has_and_belongs_to_many :roles
+  has_many :articles
 
   validates_presence_of :email
   validates_presence_of :username

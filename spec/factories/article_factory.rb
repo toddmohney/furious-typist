@@ -6,11 +6,15 @@ FactoryGirl.define do
     tags {[ FactoryGirl.create(:tag), FactoryGirl.create(:tag), FactoryGirl.create(:tag) ]}
   end
 
-  factory :unpublished_article, parent: :article do
+  factory :article_with_author, parent: :article do
+    author { FactoryGirl.create(:admin) }
+  end
+
+  factory :unpublished_article, parent: :article_with_author do
     published false
   end
 
-  factory :published_article, parent: :article do
+  factory :published_article, parent: :article_with_author do
     published true
   end
 
