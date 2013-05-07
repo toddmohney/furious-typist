@@ -27,8 +27,6 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_presence_of :username
 
-  validate :username_validator
-  validate :email_validator
   validate :name_validator
 
   after_initialize do |user|
@@ -66,71 +64,39 @@ class User < ActiveRecord::Base
 
   private
 
-    def username_validator
-      validate_username_format
+  def has_full_name?
+    !(first_name.blank? || last_name.blank?)
+  end
+
+  def name_validator
+    if has_full_name?
+      first_name_errors = validate_name_format(first_name)
+      last_name_errors = validate_name_format(last_name)
+    elsif has_half_a_name?(first_name, last_name)
+      first_name_errors = "is blank" if first_name.blank?
+      last_name_errors = "is blank" if last_name.blank?
     end
 
+    errors.add(:first_name, "first name " + first_name_errors) if first_name_errors.present?
+    errors.add(:last_name, "last name " + last_name_errors) if last_name_errors.present?
+  end
 
-    def email_validator
+  def validate_name_format(name)
+    return " is blank" if name.blank?
+    return " is too short" if is_name_too_short?(name)
+    return " is too long" if is_name_too_long?(name)
+    return " has invalid characters" if name =~ /[^A-Za-z']/
+  end
 
-    end
+  def is_name_too_short?(name)
+    name.length < 2
+  end
 
-    def has_full_name?
-      !(first_name.blank? || last_name.blank?)
-    end
+  def is_name_too_long?(name)
+    name.length > 64
+  end
 
-    def name_validator
-      if has_full_name?
-        @error_desc = validate_name_format(first_name, 2, 64)
-
-        unless @error_desc.blank?
-          return errors.add(:first_name, "first name " + @error_desc)
-        end
-
-        @error_desc = validate_name_format(last_name, 2, 64)
-
-        unless @error_desc.blank?
-          return errors.add(:last_name, "last name " + @error_desc)
-        end
-
-      elsif !(first_name.blank? && last_name.blank?)
-          # we only have half a name
-          if first_name.blank?
-            return errors.add(:first_name, "first name is blank")
-          end
-
-          if last_name.blank?
-            return errors.add(:last_name, "last name is blank")
-          end
-      end
-    end
-
-
-    def validate_username_format
-
-    end
-
-
-    def validate_name_format(name, min_length =- 1, max_length = -1)
-      if name.blank?
-        return " is blank"
-      end
-
-      if min_length >= 0
-        if name.length < min_length
-          return " is too short"
-        end
-      end
-
-      if max_length >= 0
-        if name.length > max_length
-          return " is too long"
-        end
-      end
-
-      if name =~ /[^A-Za-z']/
-        return " has invalid characters"
-      end
-    end
-
+  def has_half_a_name?(first_name, last_name)
+    !(first_name.blank? && last_name.blank?)
+  end
 end
