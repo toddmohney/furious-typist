@@ -12,12 +12,10 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
     @category_name = ""
   end
 
   def edit
-    @article = Article.find(params[:id])
     @category_name = @article.category.name unless @article.category.blank?
   end
 
@@ -52,14 +50,6 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     redirect_to articles_url
-  end
-
-  def ajaxcall
-    p = params[:ok]
-
-    respond_to do |format|
-      format.json { render :json => { :hi => "hey", :data => p }}
-    end
   end
 
   private
