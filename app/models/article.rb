@@ -36,7 +36,9 @@ class Article < ActiveRecord::Base
   searchable if: :searchable? do
     text :title, boost: 1000
     text :body, boost: 500
-
+    text :tags do
+      tags.map(&:name)
+    end
     integer :category_id
     integer :tag_ids, multiple: true
   end

@@ -34,12 +34,13 @@ Feature: Searching articles
 
     # Then I should see all articles in the category "goodtimes" in the search results
 
-  # @search @javascript
-  # Scenario: Searching for articles by tag
-    # Given I am a visitor
-    # And there are 2 articles with the tag "burgers"
+  @search @javascript
+  Scenario: Searching for articles by tag
+    Given I am a visitor
+    And there are 2 articles with the tag "burgers"
+    And there are 2 articles with the tag "pizzas"
 
-    # When I am on the "search" page
-    # And I search for "burgers"
+    When I am on the "search" page
+    And I search for "burgers"
 
-    # Then I should see all articles with the tag "burgers" in the search results
+    Then I should see all articles with the tag "burgers" in the search results
