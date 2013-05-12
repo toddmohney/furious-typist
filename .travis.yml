@@ -12,7 +12,7 @@ before_install:
 before_script:
   - phantomjs --version
   - psql -c 'create database furioustypist_test;' -U postgres
-  - rake sunspot:reset
   - rake db:migrate
   - rake db:test:prepare
   - rake db:seed
+  - rake sunspot:reset_without_reindex

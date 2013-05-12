@@ -1,7 +1,6 @@
 require 'pry'
 
 namespace :sunspot do
-  desc "Reset sunspot solr"
   task :reset => :environment do
     puts "Restarting Solr..."
     begin
