@@ -15,4 +15,3 @@ before_script:
   - rake db:migrate
   - rake db:test:prepare
   - rake db:seed
-  - rake sunspot:reset
