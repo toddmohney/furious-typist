@@ -21,7 +21,7 @@ $article_title_color_light: #3c3c3c;
 
 .article-title {
   font-weight: bold;
-  font-size: x-large;
+  font-size: 36px;
 
   color: $article_title_color;
 
@@ -66,12 +66,9 @@ $article_title_color_light: #3c3c3c;
   };
 }
 
-.article-author {
+.article-author, .article-tags {
   font-size: small;
-}
-
-.article-tags {
-  font-size: small;
+  line-height: 18px;
 }
 
 .article-permalink {
