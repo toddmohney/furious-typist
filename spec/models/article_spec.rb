@@ -46,6 +46,7 @@ describe Article do
 
     it { should have_searchable_field(:title) }
     it { should have_searchable_field(:body) }
+    it { should have_searchable_field(:categories) }
     it { should have_searchable_field(:tags) }
   end
 

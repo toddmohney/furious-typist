@@ -39,6 +39,9 @@ class Article < ActiveRecord::Base
     text :tags do
       tags.map(&:name)
     end
+    text :categories do
+      category.name
+    end
     integer :category_id
     integer :tag_ids, multiple: true
   end

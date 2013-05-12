@@ -34,7 +34,7 @@ Then /^I should see the article with the content "(.*?)" in the search results$/
 end
 
 Given /^there are (\d+) articles in the category "(.*?)"$/ do |count, category_name|
-  @articles = []
+  @articles ||= []
   count.to_i.times do
     category = FactoryGirl.create(:category, name: category_name)
     @articles << FactoryGirl.create(:published_article, category: category)
@@ -42,20 +42,36 @@ Given /^there are (\d+) articles in the category "(.*?)"$/ do |count, category_n
 end
 
 Then /^I should see all articles in the category "(.*?)" in the search results$/ do |category_name|
+  matching_articles = @articles.select { |article| article.category.name == category_name }
+
   within ".search-results" do
-    page.should have_selector(".result", count: @articles.count)
+    page.should have_selector(".article-search-result", count: matching_articles.count)
+
+    matching_articles.each do |article|
+      page.should have_content article.title
+    end
   end
 end
 
 Given /^there are (\d+) articles with the tag "(.*?)"$/ do |count, tag_name|
+  @articles ||= []
+
   count.to_i.times do
     tag = FactoryGirl.create(:tag, name: tag_name)
-    @articles ||= FactoryGirl.create(:published_article, tags: [ tag ])
+    @articles << FactoryGirl.create(:published_article, tags: [ tag ])
   end
 end
 
 Then /^I should see all articles with the tag "(.*?)" in the search results$/ do |tag_name|
+  matching_articles = @articles.select do |article| 
+    article.tags.map(&:name).include? tag_name
+  end
+
   within ".search-results" do
-    page.should have_selector(".result", count: @articles.count)
+    page.should have_selector(".article-search-result", count: matching_articles.count)
+
+    matching_articles.each do |article|
+      page.should have_content article.title
+    end
   end
 end

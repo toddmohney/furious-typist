@@ -24,15 +24,16 @@ Feature: Searching articles
 
     Then I should see the article with the content "babaganoush" in the search results
 
-  # @search @javascript
-  # Scenario: Searching for articles by category
-    # Given I am a visitor
-    # And there are 2 articles in the category "goodtimes"
+  @search @javascript
+  Scenario: Searching for articles by category
+    Given I am a visitor
+    And there are 2 articles in the category "goodtimes"
+    And there are 2 articles in the category "santoritimes"
 
-    # When I am on the "search" page
-    # And I search for "goodtimes"
+    When I am on the "search" page
+    And I search for "goodtimes"
 
-    # Then I should see all articles in the category "goodtimes" in the search results
+    Then I should see all articles in the category "goodtimes" in the search results
 
   @search @javascript
   Scenario: Searching for articles by tag
