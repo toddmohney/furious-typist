@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %title
+      Furioustypist
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+
+  %body
+    %p.notice= notice
+    %p.alert= alert
+
+    .main-title
+      - title = content_tag :h1, "Furious Typist"
+      = link_to title, "/", class: "header title"
+
+    #auth-container
+      - if user_signed_in?
+        %span.username
+          = link_to current_user.username, user_path(current_user)
+        %span.logout
+          = link_to 'log out', destroy_user_session_path, :method => :delete
+      - else
+        %span.signin
+          = link_to 'sign in ', '/users/sign_in'
+        %span.register
+          = link_to 'register', '/users/sign_up'
+
+    #search_link= link_to "Search Articles", searches_path
+
+    = yield
