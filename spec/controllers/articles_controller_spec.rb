@@ -45,7 +45,7 @@ describe ArticlesController, :type => :controller do
         end
 
         it "renders the 'preview mode' flash message" do
-          flash[:alert].should == "You are viewing this article in preview mode. This article has not been published"
+          flash[:notice].should == "You are viewing this article in preview mode. This article has not been published"
         end
       end
     end
@@ -61,7 +61,7 @@ describe ArticlesController, :type => :controller do
         end
 
         it "renders the 'published mode' flash message" do
-          flash[:alert].should == "You are viewing a published article"
+          flash[:notice].should == "You are viewing a published article"
         end
       end
 
@@ -73,7 +73,7 @@ describe ArticlesController, :type => :controller do
         end
 
         it "does not render a flash message" do
-          flash[:alert].should be_nil
+          flash[:notice].should be_nil
         end
       end
 
@@ -89,7 +89,7 @@ describe ArticlesController, :type => :controller do
         end
 
         it "does not render a flash message" do
-          flash[:alert].should be_nil
+          flash[:notice].should be_nil
         end
       end
     end

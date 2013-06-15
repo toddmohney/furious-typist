@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
     @article.author = current_user
 
     if @article.save
-      redirect_to @article, :notice => 'Article was successfully created.'
+      redirect_to @article, :alert => 'Article was successfully created.'
     else
       render :action => "new"
     end
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update_attributes(params[:article])
-      redirect_to @article, :notice => 'Article was successfully updated.'
+      redirect_to @article, :alert => 'Article was successfully updated.'
     else
       render :action => "edit"
     end
