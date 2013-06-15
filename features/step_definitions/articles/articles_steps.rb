@@ -113,7 +113,8 @@ When /^I click on the title of the article$/ do
 end
 
 Then /^I should see the article$/ do
-  page.should have_content(@article.title)
+  # page.should have_content(@article.title)
+  page.should have_content("this doesn't exist")
 end
 
 When /^I try to go directly to the unpublished article page$/ do
