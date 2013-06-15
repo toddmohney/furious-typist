@@ -14,6 +14,25 @@
  *= require_self
  */
 
+@import url(http://fonts.googleapis.com/css?family=Abel|News+Cycle|Armata|Gudea);
+
+$main_font: 'Abel', sans-serif;
+
+/* "Helvetica Neue", Helvetica, Arial, sans-serif; */
+/* font-family: 'Abel', sans-serif; */
+/* font-family: 'News Cycle', sans-serif; */
+/* font-family: 'Armata', sans-serif; */
+/* font-family: 'Gudea', sans-serif; */
+
+$main_title_font_size: 48px;
+$huge_font_size: 32px;
+$big_font_size: 24px;
+$regular_font_size: 20px;
+
+$darkest_grey: #3b3b3b;
+$dark_grey: #3d3d3d;
+
+
 body {
   margin: 0 5% 5% 5%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
