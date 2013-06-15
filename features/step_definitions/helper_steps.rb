@@ -90,9 +90,6 @@ module AuthenticationHelpers
     fill_in "user_password", :with => user.password
     click_button "Sign in"
 
-    # the user has now been redirected to the home page
-    raise "Failed to log in" unless page.has_selector?(".username")
-
     user
   end
 
