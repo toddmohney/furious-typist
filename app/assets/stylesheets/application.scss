@@ -10,8 +10,8 @@
  *
  *= require select2
  *= require twitter/bootstrap
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
 
 @import url(http://fonts.googleapis.com/css?family=Abel|News+Cycle|Armata|Gudea);
@@ -34,27 +34,48 @@ $dark_grey: #3d3d3d;
 
 
 body {
-  margin: 0 5% 5% 5%;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size:24px;
-  line-height:32px;
-  color:#3d3d3d;
+  margin: 0 3% 3% 3%;
+  text-align: center;
 }
 
-$title_color: #3b3b3b;
+#main-container {
+  text-align: left;
+  max-width: 968px;
+  margin: auto;
+  font-family: $main_font;
+  font-size: $big_font_size;
+  line-height: $huge_font_size;
+  color: $dark_grey;
+}
 
-.main-title {
-  h1 {
-    color: $title_color;
+.header {
+  width: 100%; 
+
+  .title {
+    float: left;
+
+    a {
+      text-decoration: none;
+
+      h1 {
+        font-size: $main_title_font_size;
+        color: $darkest_grey;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .search {
+    padding-top: 15px;
+    float: right;
   }
 }
 
-#auth-container {
-  width:100%;
-  text-align: right;
-}
-
-#search_link {
-  width:100%;
-  text-align: right;
+.clearfix {
+  content: "";
+  display: table;
+  clear: both;
 }

@@ -10,14 +10,10 @@
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
   %body
-    %p.notice= notice
-    %p.alert= alert
+    #main-container
+      .notice= notice
 
-    .main-title
-      - title = content_tag :h1, "Furious Typist"
-      = link_to title, "/", class: "header title"
+      = render partial: "layouts/header"
 
 
-    #search_link= link_to "Search Articles", searches_path
-
-    = yield
+      = yield

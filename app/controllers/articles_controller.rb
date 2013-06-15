@@ -57,9 +57,9 @@ class ArticlesController < ApplicationController
 
   def set_flash_message
     if @article.published?
-      flash[:alert] = "You are viewing a published article"
+      flash[:notice] = "You are viewing a published article"
     elsif
-      flash[:alert] = "You are viewing this article in preview mode. This article has not been published"
+      flash[:notice] = "You are viewing this article in preview mode. This article has not been published"
     end
   end
 
