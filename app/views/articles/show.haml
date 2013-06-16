@@ -1,6 +1,10 @@
 .article-title
   #{@article.title}
 
+.article-create-date
+  - unless @article.created_at.blank?
+    = @article.created_at.to_formatted_s(:db)
+
 .article-body
   #{@article.markdown}
 
