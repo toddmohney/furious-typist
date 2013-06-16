@@ -9,8 +9,13 @@
   = simple_form_for(@article) do |f|
     = f.input :title
     = f.input :body
-    = f.input :category, :value => @category_name
-    = f.input :tags, :value => @article.get_tag_names
+    .field
+      = f.label :category
+      = f.text_field :category, :value => @category_name
+
+    .field
+      = f.label :tags
+      = f.text_field :tags, :value => @article.get_tag_names
     = f.input :published
 
     .actions
