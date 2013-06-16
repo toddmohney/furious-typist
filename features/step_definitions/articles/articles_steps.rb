@@ -42,21 +42,22 @@ Then /^I should see the article edit form$/ do
 end
 
 When /^I fill out the article edit form$/ do
-  @edited_article = FactoryGirl.build(:article)
+  @new_title = Faker::Lorem.words(3).join(" ")
+  @new_body = Faker::Lorem.paragraphs(3).join(" ")
+  @new_category = Faker::Lorem.words(2).join(" ")
+  @new_tags = Faker::Lorem.words(3).join(" ")
 
-  # ensure the factory built, but did not create
-  # a new article
-  Article.all.count.should eq(1)
-
-  page.fill_in "article_title", :with => @edited_article.title
-  page.fill_in "article_body", :with => @edited_article.body.join
+  page.fill_in "article_title", :with => @new_title
+  page.fill_in "article_body", :with => @new_body
+  page.fill_in "article_category", :with => @new_category
+  page.fill_in "article_tags", :with => @new_tags
 end
 
 Then /^I should see my updated article$/ do
   page.should have_content("Article was successfully updated.")
 
-  page.should have_content(@edited_article.title)
-  page.should have_content(@edited_article.body.join)
+  page.should have_content(@new_title)
+  page.should have_content(@new_body)
 end
 
 Given /^I am not logged in$/ do
