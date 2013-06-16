@@ -80,3 +80,12 @@ $article_title_color_light: #3c3c3c;
   width:100%;
   height: $article_spacer_height;
 }
+
+.article-form {
+  width: 100%;
+
+  input, textarea {
+    width: 100%;
+  }
+}
+
