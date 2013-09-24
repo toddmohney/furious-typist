@@ -22,6 +22,7 @@ group :test, :development do
   gem 'rake'
   gem 'rspec-rails', '~> 2.4'
   gem 'simplecov-rcov'
+  gem 'shoulda'
   gem 'sunspot_rails'
   gem 'sunspot_solr'
   gem 'zeus'
