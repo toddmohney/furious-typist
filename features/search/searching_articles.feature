@@ -4,7 +4,7 @@ Feature: Searching articles
   So that I can find the specific content that I am looking
     for without paging through the entire blog
 
-  @selenium
+  @javascript
   Scenario: Searching for an article by title
     Given I am a visitor
     And there is an article titled "tuna talk"
@@ -14,17 +14,17 @@ Feature: Searching articles
 
     Then I should see the article titled "tuna talk" in the search results
 
-  @selenium
-  Scenario: Searching for an article by content
-    Given I am a visitor
-    And there is an article with the word "babaganoush" in its body
+  # @javascript
+  # Scenario: Searching for an article by content
+    # Given I am a visitor
+    # And there is an article with the word "babaganoush" in its body
 
-    When I am on the "search" page
-    And I search for "babaganoush"
+    # When I am on the "search" page
+    # And I search for "babaganoush"
 
-    Then I should see the article with the content "babaganoush" in the search results
+    # Then I should see the article with the content "babaganoush" in the search results
 
-  # @selenium
+  # @javascript
   # Scenario: Searching for articles by category
     # Given I am a visitor
     # And there are 2 articles in the category "goodtimes"
@@ -35,7 +35,7 @@ Feature: Searching articles
 
     # Then I should see all articles in the category "goodtimes" in the search results
 
-  # @selenium
+  # @javascript
   # Scenario: Searching for articles by tag
     # Given I am a visitor
     # And there are 2 articles with the tag "burgers"
