@@ -17,10 +17,6 @@ class Article < ActiveRecord::Base
   scope :published, where(published: true)
   scope :unpublished, where(published: false)
 
-  def markdown
-    BlueCloth.new(body).to_html.html_safe
-  end
-
   def get_tag_names
     @tag_names = []
 

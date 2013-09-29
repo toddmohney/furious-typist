@@ -31,22 +31,6 @@ describe Article do
     it { should have_searchable_field(:tags) }
   end
 
-  describe "#markdown" do
-    let(:markdown) { double(:markdown) }
-    let(:markdown_output) { double(:markdown_output) }
-    let(:article_params) { { :body => "cool article body" } }
-
-    before do
-      BlueCloth.stub(:new).with(article_params[:body] ) { markdown }
-      markdown.stub_chain(:to_html, :html_safe) { markdown_output }
-    end
-
-    it "returns the html representation of body content written in Markdown" do
-      article = Article.new(article_params)
-      expect(article.markdown).to eq(markdown_output)
-    end
-  end
-
   describe "#get_tag_names" do
     context "when an article has no tags" do
       let(:article) { Article.new }

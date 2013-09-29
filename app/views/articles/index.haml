@@ -16,7 +16,7 @@
         = article.created_at.to_formatted_s(:db)
 
     .article-body
-      = article.markdown
+      = markdown_to_html(article.body)
 
     .article-tags
       %em
