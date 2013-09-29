@@ -20,12 +20,9 @@ group :test, :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-doc'
-  gem 'rake'
   gem 'rspec-rails', '~> 2.4'
   gem 'simplecov-rcov'
   gem 'shoulda'
-  gem 'sunspot_rails'
-  gem 'sunspot_solr'
   gem 'zeus'
 end
 
@@ -46,6 +43,7 @@ group :test do
   gem 'launchy'
   gem 'phantomjs'
   gem 'poltergeist'
+  gem 'rake'
   gem 'simplecov'
   gem 'sunspot_matchers'
   gem 'sunspot_test'
@@ -65,6 +63,7 @@ gem 'less-rails-bootstrap'
 gem 'pg'
 gem 'simple_form'
 gem 'sunspot_rails'
+gem 'sunspot_solr'
 gem 'thin'
 
 
