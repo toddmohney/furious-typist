@@ -5,7 +5,6 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'database_cleaner'
-require 'sunspot_test/rspec'
 require 'support/fixture_builder'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -27,19 +26,15 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = true
 
-  config.include SunspotMatchers
-
-  config.before(:all, search: false) do
-    Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
-  end
-
-  config.after(:all, search: false) do
-    Sunspot.session = Sunspot.session.original_session
-  end
-
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
   # config.order = "random"
+
+  config.after(:each) { delete_search_index }
+end
+
+def delete_search_index
+  Article.index.delete
 end

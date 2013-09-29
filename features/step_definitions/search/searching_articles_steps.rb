@@ -63,7 +63,7 @@ Given /^there are (\d+) articles with the tag "(.*?)"$/ do |count, tag_name|
 end
 
 Then /^I should see all articles with the tag "(.*?)" in the search results$/ do |tag_name|
-  matching_articles = @articles.select do |article| 
+  matching_articles = @articles.select do |article|
     article.tags.map(&:name).include? tag_name
   end
 

@@ -1,4 +1,8 @@
 class Article < ActiveRecord::Base
+  include Tire::Model::Search
+
+  index_name "#{Tire::Model::Search.index_prefix}articles"
+
   attr_accessible :body,
                   :title,
                   :tags,
@@ -17,28 +21,19 @@ class Article < ActiveRecord::Base
   scope :published, where(published: true)
   scope :unpublished, where(published: false)
 
+  after_save do
+    update_index if searchable?
+  end
+
+  def searchable?
+    published?
+  end
+
   def get_tag_names
     @tag_names = []
 
     tags.each { |t| @tag_names << t.name } unless tags.blank?
 
     @tag_names.join(", ")
-  end
-
-  def searchable?
-    published
-  end
-
-  searchable if: :searchable? do
-    text :title, boost: 1000
-    text :body, boost: 500
-    text :tags do
-      tags.map(&:name)
-    end
-    text :categories do
-      category.name
-    end
-    integer :category_id
-    integer :tag_ids, multiple: true
   end
 end

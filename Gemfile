@@ -45,13 +45,13 @@ group :test do
   gem 'poltergeist'
   gem 'rake'
   gem 'simplecov'
-  gem 'sunspot_matchers'
-  gem 'sunspot_test'
 end
 
 group :production do
 end
 
+# To use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bluecloth'
 gem 'cancan'
 gem 'devise'
@@ -62,13 +62,8 @@ gem 'json'
 gem 'less-rails-bootstrap'
 gem 'pg'
 gem 'simple_form'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
 gem 'thin'
-
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'tire'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

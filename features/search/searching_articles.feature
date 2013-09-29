@@ -4,7 +4,7 @@ Feature: Searching articles
   So that I can find the specific content that I am looking
     for without paging through the entire blog
 
-  @search @javascript
+  @selenium
   Scenario: Searching for an article by title
     Given I am a visitor
     And there is an article titled "tuna talk"
@@ -14,7 +14,7 @@ Feature: Searching articles
 
     Then I should see the article titled "tuna talk" in the search results
 
-  @search @javascript
+  @selenium
   Scenario: Searching for an article by content
     Given I am a visitor
     And there is an article with the word "babaganoush" in its body
@@ -24,24 +24,24 @@ Feature: Searching articles
 
     Then I should see the article with the content "babaganoush" in the search results
 
-  @search @javascript
-  Scenario: Searching for articles by category
-    Given I am a visitor
-    And there are 2 articles in the category "goodtimes"
-    And there are 2 articles in the category "santoritimes"
+  # @selenium
+  # Scenario: Searching for articles by category
+    # Given I am a visitor
+    # And there are 2 articles in the category "goodtimes"
+    # And there are 2 articles in the category "santoritimes"
 
-    When I am on the "search" page
-    And I search for "goodtimes"
+    # When I am on the "search" page
+    # And I search for "goodtimes"
 
-    Then I should see all articles in the category "goodtimes" in the search results
+    # Then I should see all articles in the category "goodtimes" in the search results
 
-  @search @javascript
-  Scenario: Searching for articles by tag
-    Given I am a visitor
-    And there are 2 articles with the tag "burgers"
-    And there are 2 articles with the tag "pizzas"
+  # @selenium
+  # Scenario: Searching for articles by tag
+    # Given I am a visitor
+    # And there are 2 articles with the tag "burgers"
+    # And there are 2 articles with the tag "pizzas"
 
-    When I am on the "search" page
-    And I search for "burgers"
+    # When I am on the "search" page
+    # And I search for "burgers"
 
-    Then I should see all articles with the tag "burgers" in the search results
+    # Then I should see all articles with the tag "burgers" in the search results
