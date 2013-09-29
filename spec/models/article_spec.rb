@@ -1,28 +1,9 @@
 require 'spec_helper'
 
 describe Article do
-  describe "validation" do
-    it "fails validation with no body" do
-      expect(Article.new).to have(1).error_on(:body)
-    end
-
-    it "fails validation without a title" do
-      expect(Article.new).to have(1).error_on(:title)
-    end
-
-    it "passes validation with a body attribute" do
-      expect(Article.new({ :body => "sample body" })).to have(0).errors_on(:body)
-    end
-
-    it "passes validation with a title attribute" do
-      expect(Article.new({ :title => "sample title" })).to have(0).errors_on(:title)
-    end
-  end
-
-  describe "factories" do
-    it "has a valid factory" do
-      FactoryGirl.create(:article).should be_valid
-    end
+  describe "validations" do
+    it { should validate_presence_of(:body) }
+    it { should validate_presence_of(:title) }
   end
 
   describe "#searchable?" do
@@ -51,19 +32,24 @@ describe Article do
   end
 
   describe "#markdown" do
-    it "returns the html representation of body content written in Markdown" do
-      article = Article.new({
-        :title => "test title",
-        :body => "+ list item"
-      })
+    let(:markdown) { double(:markdown) }
+    let(:markdown_output) { double(:markdown_output) }
+    let(:article_params) { { :body => "cool article body" } }
 
-      expect(article.markdown).to eq("<ul>\n<li>list item</li>\n</ul>\n")
+    before do
+      BlueCloth.stub(:new).with(article_params[:body] ) { markdown }
+      markdown.stub_chain(:to_html, :html_safe) { markdown_output }
+    end
+
+    it "returns the html representation of body content written in Markdown" do
+      article = Article.new(article_params)
+      expect(article.markdown).to eq(markdown_output)
     end
   end
 
   describe "#get_tag_names" do
     context "when an article has no tags" do
-      let(:article) { Article.new({ body: "hey hey", title: "hi hi" }) }
+      let(:article) { Article.new }
 
       it "returns an empty string" do
         article.get_tag_names.should eq("")
@@ -71,13 +57,14 @@ describe Article do
     end
 
     context "when an article has tags" do
-      let(:article) { Article.new({ body: "hey hey", title: "hi hi", tags: tags }) }
-      let(:tags) {[
-        Tag.new({ name: "tag_one" }),
-        Tag.new({ name: "tag_two" })
-      ]}
+      let(:tags) { [ double(:tag1, name: "tag_one"), double(:tag2, name: "tag_two") ] }
+
+      before do
+        Article.any_instance.stub(:tags) { tags }
+      end
 
       it "returns a comma separated list of tags" do
+        article = Article.new
         article.get_tag_names.should eq("tag_one, tag_two")
       end
     end
