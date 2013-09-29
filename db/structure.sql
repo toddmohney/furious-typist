@@ -38,7 +38,9 @@ CREATE TABLE articles (
     body text,
     category_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    published boolean DEFAULT false,
+    author_id integer
 );
 
 
@@ -356,3 +358,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130228024049');
 INSERT INTO schema_migrations (version) VALUES ('20130228024223');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302033144');
+
+INSERT INTO schema_migrations (version) VALUES ('20130425003558');
+
+INSERT INTO schema_migrations (version) VALUES ('20130507001001');
