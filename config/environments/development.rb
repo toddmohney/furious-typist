@@ -37,5 +37,5 @@ Furioustypist::Application.configure do
   config.assets.debug = true
 
   # Recommended by Devise when deployed using Rails3.1+ on Heroku
-  # config.assets.initialize_on_precompile = false
+  config.assets.initialize_on_precompile = false
 end
