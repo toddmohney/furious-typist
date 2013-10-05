@@ -4,15 +4,15 @@ Feature: Searching articles
   So that I can find the specific content that I am looking
     for without paging through the entire blog
 
-  @javascript
-  Scenario: Searching for an article by title
-    Given I am a visitor
-    And there is an article titled "tuna talk"
+  # @javascript
+  # Scenario: Searching for an article by title
+    # Given I am a visitor
+    # And there is an article titled "tuna talk"
 
-    When I am on the "search" page
-    And I search for "tuna talk"
+    # When I am on the "search" page
+    # And I search for "tuna talk"
 
-    Then I should see the article titled "tuna talk" in the search results
+    # Then I should see the article titled "tuna talk" in the search results
 
   # @javascript
   # Scenario: Searching for an article by content
