@@ -7,14 +7,9 @@ gem 'rails', '3.2.11'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'elementaljs-rails'
-  gem 'bootstrap-sass'
-  gem 'simple_form'
   gem 'sass-rails',   '~> 3.2.3'
   gem "select2-rails"
   gem 'uglifier', '>= 1.0.3'
-  gem 'bluecloth'
-  gem 'jquery-rails'
 end
 
 group :test, :development do
@@ -55,6 +50,11 @@ group :production do
 end
 
 # To use ActiveModel has_secure_password
+gem 'bluecloth'
+gem 'jquery-rails'
+gem 'elementaljs-rails'
+gem 'bootstrap-sass'
+gem 'simple_form'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'cancan'
 gem 'devise'
