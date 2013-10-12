@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -8,11 +10,16 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require select2
- *= require twitter/bootstrap
- *= require_self
- *= require_tree .
+ * require select2
+ * require_self
+ * require_tree .
  */
+
+@import "bootstrap";
+
+@import "constants";
+@import "modules/articles";
+@import "modules/users";
 
 @import url(http://fonts.googleapis.com/css?family=Abel|News+Cycle|Armata|Gudea);
 
@@ -50,7 +57,7 @@ body {
 
 .header {
   margin-bottom: 20px;
-  width: 100%; 
+  width: 100%;
 
   .title {
     float: left;
