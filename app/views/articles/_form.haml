@@ -3,13 +3,12 @@
     = f.input :title
     = f.input :body
 
-    .input
-      = f.label :category
-      = f.text_field :category, :value => @category_name
+    = f.simple_fields_for :category, @article.category || Category.new do |category_form|
+      = category_form.input :name, label: "Category name"
 
-    .input
-      = f.label :tags
-      = f.text_field :tags, :value => @article.get_tag_names
+    - article_tags = @article.tags.empty? ? Tag.new : @article.tags
+    = f.simple_fields_for :tags, article_tags do |tags_form|
+      = tags_form.input :name, label: "Tag names"
 
     = f.input :published
 

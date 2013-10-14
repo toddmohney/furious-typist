@@ -3,7 +3,7 @@ FactoryGirl.define do
     body { Faker::Lorem.paragraphs(5) }
     title { Faker::Lorem.sentence }
     category { FactoryGirl.create(:category) }
-    tags {[ FactoryGirl.create(:tag), FactoryGirl.create(:tag), FactoryGirl.create(:tag) ]}
+    tags {[ FactoryGirl.create(:tag) ]}
   end
 
   factory :article_with_author, parent: :article do

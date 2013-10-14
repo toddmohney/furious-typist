@@ -24,8 +24,8 @@ When /^I fill out the article creation form$/ do
   within("#new_article") do
     page.fill_in "article_title", :with => Faker::Lorem.words(5).join(" ")
     page.fill_in "article_body", :with => Faker::Lorem.paragraphs(5).join(" ")
-    page.fill_in "article_category", :with => Faker::Lorem.word
-    page.fill_in "article_tags", :with => Faker::Lorem.words(5).join(" ")
+    page.fill_in "Category name", :with => Faker::Lorem.word
+    page.fill_in "Tag names", :with => Faker::Lorem.words(5).join(" ")
   end
 end
 
@@ -49,8 +49,8 @@ When /^I fill out the article edit form$/ do
 
   page.fill_in "article_title", :with => @new_title
   page.fill_in "article_body", :with => @new_body
-  page.fill_in "article_category", :with => @new_category
-  page.fill_in "article_tags", :with => @new_tags
+  page.fill_in "Category name", :with => @new_category
+  page.fill_in "Tag names", :with => @new_tags
 end
 
 Then /^I should see my updated article$/ do

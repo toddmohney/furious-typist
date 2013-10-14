@@ -5,11 +5,11 @@ class Article < ActiveRecord::Base
 
   attr_accessible :body,
                   :title,
-                  :tags,
-                  :category,
                   :created_at,
                   :updated_at,
-                  :published
+                  :published, 
+                  :category_attributes,
+                  :tags_attributes
 
   validates_presence_of :body,
                         :title
@@ -17,6 +17,9 @@ class Article < ActiveRecord::Base
   belongs_to :author, class_name: "User"
   belongs_to :category
   has_and_belongs_to_many :tags
+
+  accepts_nested_attributes_for :category
+  accepts_nested_attributes_for :tags
 
   scope :published, where(published: true)
   scope :unpublished, where(published: false)
