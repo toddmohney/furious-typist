@@ -87,3 +87,20 @@ body {
   display: table;
   clear: both;
 }
+
+.errors {
+  border: 1px solid #ccc;
+  background-color: #CC0318;
+  font-size: 18px;
+  color: #fff;
+  padding: 5px;
+}
+
+.error {
+  @extend .errors;
+  font-size: 14px;
+}
+
+.input + .input {
+  padding-top: 15px;
+}

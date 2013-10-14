@@ -195,6 +195,11 @@ describe ArticlesController, :type => :controller do
     end
 
     context "with invalid params" do
+      it "sets a flash message" do
+        post :create, {:article => { "title" => "invalid value" }}
+        expect(flash[:error]).to be
+      end
+
       it "assigns a newly created but unsaved article as @article" do
         # Trigger the behavior that occurs when invalid params are submitted
         Article.any_instance.stub(:save).and_return(false)

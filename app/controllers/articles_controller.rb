@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, :alert => 'Article was successfully created.'
     else
+      flash[:error] = "There are #{@article.errors.count} errors which need to be corrected"
       render :action => "new"
     end
   end
